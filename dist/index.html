@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    body {background-color: #30383c; font: 12px/1.5 arial, tahoma, Verdana, Microsoft YaHei, simhei;}
+    *,*:after,*:before { box-sizing: border-box;}
+    ol,ul {list-style: none;}
+    .main {position: relative; width: 330px; height: 260px;}
+    .links-box {width: 232px; height: 32px; border: 1px solid #bad5fb; border-radius: 3px; position: absolute; left: 40px; bottom: 20px; transition: all .3s}
+    .links-box>.links-tit {width: 100%; height: 30px; color: #fff; font: 14px/30px Microsoft YaHei, simhei; position: relative; padding: 0 10px; position: absolute; bottom: 0; left: 0;}
+    .links-box>.links-tit>.links-icon {display: inline-block; width: 30px; height: 30px; position: absolute; top: 0; right: 0;}
+    .links-box>.links-tit>.links-icon:after, .links-box>.links-tit>.links-icon:before{content: ""; display: inline-block; width: 10px; height: 14px; border-bottom: 1px solid #fff; position: absolute; top: 2px;}
+    .links-box>.links-tit>.links-icon:after {transform: rotate(-45deg); left: 2px;}
+    .links-box>.links-tit>.links-icon:before {transform: rotate(45deg); right: 2px;}
+    .links-box>.links-list {width: 100%; max-height: 120px; overflow-x: hidden; overflow-y: auto; height: 0; opacity: 0; transition: all .3s ease-in .1s}
+    .links-box>.links-list>li {width: 100%; height: 30px; line-height: 30px; padding: 0 10px;}
+    .links-box>.links-list>li>a {color: #bad5fb;}
+    .links-box>.links-list>li:hover {background-color: #475359}
+    .links-box>.links-list>li>a:hover {color: #fff;}
+    .links-box:hover {height: 152px;}
+    .links-box:hover>.links-list {height: auto; opacity: 1;}
+    .links-box:hover>.links-tit>.links-icon {transform: rotate(180deg); transition: all .3s}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="links-box">
+      <ul class="links-list">
+        <li><a href="#">维欧</a></li>
+        <li><a href="#">鲁班留学</a></li>
+        <li><a href="#">南京润连嘉机械有限公司</a></li>
+        <li><a href="#">微商银行</a></li>
+        <li><a href="#">南京润连嘉机械有限公司</a></li>
+        <li><a href="#">微商银行</a></li>
+      </ul>
+      <div class="links-tit"><span>友情链接</span><span class="links-icon"></span></div>
+    </div>
+  </div>
+
+  <script src="./bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "name": "edward-react-mobx",
+  "version": "1.0.0",
+  "description": "react & mobx",
+  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": ">= 8"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "transform-decorators-legacy"
+    ]
+  },
+  "config": {
+    "port": "3000"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwardxyt/edward-react-mobx.git"
+  },
+  "keywords": [
+    "react",
+    "mobx"
+  ],
+  "author": "xiayuting <56833517@qq.com> (https://github.com/edwardxyt)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edwardxyt/edward-react-mobx/issues"
+  },
+  "homepage": "https://github.com/edwardxyt/edward-react-mobx#readme",
+  "devDependencies": {
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
