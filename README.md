@@ -2,7 +2,7 @@
 
 ## 初衷
 
-由于 2018 年 react 技术栈，包括工具有整体版本提升。reaact(16.2)，react-router(4x)，webpack(4x)等等。从新写一套可以支持多环境，多项目，分别 build 的 react 脚手架。
+由于 2018 年 react 技术栈，包括工具有整体版本提升。reaact(16.2)，react-router(4x)，webpack(4x)等等。从新写一套可以支持多环境，多项目，分别 build 的 react 脚手架。只为了实现 SPA 单页应用。部署需要 nginx。
 
 ### 问题
 
@@ -23,3 +23,13 @@
 1.  npm script 传参 包括（项目名、接口地址）
 2.  dev、dep、test scripts 区分环境
 3.  接口地址写入配置文件 
+
+### 新问题
+
+1.  如果在 bin 中执行 webpack 是否会更好 2018.03.22
+
+### 解决方案
+
+1.  环境通过 npm script 传入 **ENV**
+2.  **DEBUG** 通过判断 **ENV**来判断
+3.  **CLUSTER** **PROJECT** 项目名与活动名 通过 node 传入

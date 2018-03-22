@@ -12,11 +12,11 @@
     "plugins": ["transform-runtime", "transform-decorators-legacy"]
   },
   "config": {
-    "port": "3000"
+    "port": "8080"
   },
   "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "NODE_ENV='development' webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
