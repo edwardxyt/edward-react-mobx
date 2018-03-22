@@ -33,3 +33,7 @@
 1.  环境通过 npm script 传入 **ENV**
 2.  **DEBUG** 通过判断 **ENV**来判断
 3.  **CLUSTER** **PROJECT** 项目名与活动名 通过 node 传入
+
+### 启动
+
+npm run dev --ENTRY=news/demo
