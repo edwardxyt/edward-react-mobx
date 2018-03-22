@@ -8,23 +8,13 @@
     "node": ">= 8"
   },
   "babel": {
-    "presets": [
-      "env",
-      "react"
-    ],
-    "plugins": [
-      "transform-runtime",
-      "transform-decorators-legacy"
-    ]
+    "presets": ["env", "react"],
+    "plugins": ["transform-runtime", "transform-decorators-legacy"]
   },
   "config": {
     "port": "3000"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "scripts": {
     "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -33,10 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/edwardxyt/edward-react-mobx.git"
   },
-  "keywords": [
-    "react",
-    "mobx"
-  ],
+  "keywords": ["react", "mobx"],
   "author": "xiayuting <56833517@qq.com> (https://github.com/edwardxyt)",
   "license": "MIT",
   "bugs": {
