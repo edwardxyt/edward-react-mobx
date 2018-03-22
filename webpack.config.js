@@ -1,13 +1,11 @@
 let webpack = require("webpack");
 let path = require("path");
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.npm_config_CLUSTER);
-console.log(process.env.npm_config_PROJECT);
+let entry = process.env.npm_config_ENTRY || "";
 
 module.exports = {
   entry: {
-    app: path.join(__dirname, "src", "index.js")
+    app: path.join(__dirname, "src", `${entry}`, "index.js")
   },
   mode: "development", //development' or 'production'
   output: {
@@ -15,10 +13,10 @@ module.exports = {
     path: path.join(__dirname, "dist")
   },
   devServer: {
-    // fake数据使用
+    // fake数据使用，如果接口是跨域的 这也可以使用
     // proxy: {
     //   "/api": {
-    //     target: "https://xiayuting.cc",
+    //     target: "http://localhost:3000",  //请求到 /api/users 现在会被代理到请求 http://localhost:3000/api/users
     //     secure: false
     //   }
     // },
@@ -41,8 +39,7 @@ module.exports = {
     new webpack.DefinePlugin({
       __ENV__: JSON.stringify(process.env.NODE_ENV),
       __DEBUG__: process.env.NODE_ENV === "production" ? false : true,
-      __CLUSTER__: JSON.stringify(process.env.npm_config_CLUSTER),
-      __PROJECT__: JSON.stringify(process.env.npm_config_PROJECT)
+      __PROJECT__: JSON.stringify(entry)
     })
   ]
 };
