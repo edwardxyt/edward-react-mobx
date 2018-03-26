@@ -23,6 +23,9 @@
 1.  npm script 传参 包括（项目名、接口地址）
 2.  dev、dep、test scripts 区分环境
 3.  接口地址写入配置文件 
+4.  提取配置文件策略，1.多次使用的字段 2.如果只用到一次，有可能在开发过程中变动的字段，既写入配置文件 反之不写入
+5.  端口号为什么没有写入配置文件 而是写入了 pg，因为快捷修改启动代码而不需要 修改源码
+6.  生成版本，不需要本地配置文件 所以不加载
 
 ### 新问题
 
@@ -40,3 +43,13 @@
 ### 启动
 
 npm run dev --ENTRY=news/demo
+
+### 简化易读
+
+有些人喜欢把 webpack 做成 base.config、然后合并对象。生成对应的 development' or 'production'。但是我并不喜欢这种方式 首先模式下 只有 3 种 development' or 'production' 'test'。然后解耦的也并不是很多。且不易于读。我的策略是 不提取 baseConfg，只做整体项目的配置文件。这样易读 易于修改。
+
+dev 是用的是 webpack-cli 启动
+dep 是通过 node.run 还行的 webpackconfig
+
+dep 查看效果 需要你起一个 node http server 查看，最简单的方式是安装 live-server.
+由于我公司接口绑定域名了，所以接口联调需要本机起 nginx 修改 hosts 反向代理才可以响应，所以在这里我并没有安装 dep 下的服务，请小伙伴根据自己情况 选择适合方式查看代码。

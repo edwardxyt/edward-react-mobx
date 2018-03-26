@@ -8,23 +8,13 @@
     "node": ">= 8"
   },
   "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ],
-    "plugins": [
-      "transform-decorators-legacy"
-    ]
+    "presets": ["env", "react", "stage-2"],
+    "plugins": ["transform-decorators-legacy"]
   },
   "config": {
-    "port": "8080"
+    "port": "7001"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "scripts": {
     "clean": "rimraf node_modules",
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
@@ -35,10 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/edwardxyt/edward-react-mobx.git"
   },
-  "keywords": [
-    "react",
-    "mobx"
-  ],
+  "keywords": ["react", "mobx"],
   "author": "xiayuting <56833517@qq.com> (https://github.com/edwardxyt)",
   "license": "MIT",
   "bugs": {

@@ -5,7 +5,7 @@ import App from "./router";
 import UAParser from "ua-parser-js";
 
 let parser = new UAParser();
-console.log(parser.getOS());
+console.log(parser.getResult());
 
 let main = function() {
     render(<App />, document.getElementById("main"));

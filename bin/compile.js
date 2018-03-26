@@ -1,8 +1,14 @@
-// const webpack_config = require("../config/webpack.production.config");
-// const config = require('../config')
+const webpack_production_config = require("../config/webpack.production.config");
 const webpack = require("webpack");
-const webpack_config = require("../webpack.config");
+const debug = require("debug");
+const echo = debug("production:webpack");
 
-webpack(webpack_config).run((err, stats) => {
-  console.log(webpack);
+echo("执行编译");
+webpack_production_config().then(config => {
+    // webpack(config).run((err, stats) => {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    //     echo("webpack compile complete");
+    // });
 });

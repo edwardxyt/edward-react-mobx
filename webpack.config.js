@@ -1,49 +1,49 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const debug = require("debug");
-const path = require("path");
 const ip = require("ip");
 const echo = debug("development:webpack");
 
-let entry = process.env.npm_config_ENTRY || "";
-let port = process.env.npm_package_config_port || 3000;
-let PRESETS_ENV_BROWSERS = ["last 2 major versions"];
-PRESETS_ENV_BROWSERS.push("ie 9");
-
-let template_path = path.join(__dirname, "src", `${entry}`, "index.hbs");
+// 加载全局配置文件
+let app_config = require("./config")(__dirname);
+// 加载本地配置文件
+let settings = {};
+try {
+    settings = require("./config/localhost.settings.js");
+    echo("加载本地地配置。");
+} catch (e) {
+    echo("无本地配置文件可用！");
+}
+// 合并本地与全局
+const CONSTANTS = Object.assign({}, app_config, settings);
 
 echo("启动webpack-dev-server");
-echo(`服务器运行在 http://${ip.address()}:${port}`);
+echo(`服务器运行在 http://${ip.address()}:${CONSTANTS.devServer.port}`);
 
 module.exports = {
-    entry: ["babel-polyfill", "whatwg-fetch", path.join(__dirname, "src", `${entry}`, "index.js")],
+    entry: ["babel-polyfill", "whatwg-fetch", CONSTANTS.main],
     mode: "development", //development' or 'production'
     output: {
         filename: "bundle.js",
         chunkFilename: "[name].[chunkhash:5].chunk.js",
         publicPath: "/",
-        path: path.join(__dirname, "dist")
+        path: CONSTANTS.dist
     },
     devtool: "eval-source-map",
     devServer: {
         // fake数据使用，如果接口是跨域的 这也可以使用
-        proxy: {
-            "/api": {
-                target: "https://cnodejs.org", //请求到 /api/users 现在会被代理到请求 http://localhost:3000/api/users
-                secure: false
-            }
-        },
+        proxy: CONSTANTS.devServer.proxy,
         overlay: {
             warnings: true,
             errors: true
         },
-        open: true,
+        // open: true,
         inline: true,
         hot: true,
         stats: "minimal",
-        contentBase: path.join(__dirname, "src", "dist"),
+        contentBase: CONSTANTS.dist,
         compress: true,
-        port: port,
+        port: CONSTANTS.devServer.port,
         host: "0.0.0.0",
         historyApiFallback: true
     },
@@ -61,7 +61,7 @@ module.exports = {
                                     "env",
                                     {
                                         targets: {
-                                            browsers: PRESETS_ENV_BROWSERS,
+                                            browsers: CONSTANTS.PRESETS_ENV_BROWSERS,
                                             useBuiltIns: true,
                                             uglify: false,
                                             include: ["transform-es2015-arrow-functions"],
@@ -76,14 +76,17 @@ module.exports = {
                         }
                     }
                 ],
-                include: [path.resolve(__dirname, "src")]
+                exclude: [CONSTANTS.node_module_dir],
+                include: [CONSTANTS.src]
             },
             {
                 test: /\.hbs/,
                 loader: "handlebars-loader",
                 options: {
-                    partialDirs: [entry + "/templates"]
-                }
+                    partialDirs: [CONSTANTS.templates_dir]
+                },
+                exclude: [CONSTANTS.node_module_dir],
+                include: [CONSTANTS.src]
             },
             {
                 test: /\.css$/,
@@ -108,7 +111,9 @@ module.exports = {
                             sourceMap: true
                         }
                     }
-                ]
+                ],
+                exclude: [CONSTANTS.node_module_dir],
+                include: [CONSTANTS.src]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -121,25 +126,23 @@ module.exports = {
                             name: "images/[name]-[hash:8].[ext]"
                         }
                     }
-                ]
+                ],
+                exclude: [CONSTANTS.node_module_dir],
+                include: [CONSTANTS.src]
             }
         ]
     },
     plugins: [
         // 热启动
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            __ENV__: JSON.stringify(process.env.NODE_ENV),
-            __DEBUG__: process.env.NODE_ENV === "production" ? false : true,
-            __PROJECT__: JSON.stringify(entry)
-        }),
+        new webpack.DefinePlugin(CONSTANTS.inject),
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: template_path,
+            template: CONSTANTS.template_path,
             COMPILED_AT: new Date().toString(),
             CONFIG: {
-                env: process.env.NODE_ENV,
-                debug: true,
+                env: CONSTANTS.inject.__ENV__,
+                debug: CONSTANTS.inject.__DEBUG__,
                 api_path: "",
                 meta: ""
             }
