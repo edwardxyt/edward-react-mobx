@@ -7,7 +7,6 @@ const echo = debug("production:webpack");
 
 // 加载全局配置文件
 let app_config = require(".")(path.resolve(__dirname, "../"));
-console.log(app_config);
 
 echo("加载配置文件");
 
@@ -66,30 +65,19 @@ module.exports = function(CONFIG = {}) {
                     },
                     {
                         test: /\.css$/,
-                        use: [
-                            {
-                                loader: "style-loader",
-                                options: {
-                                    sourceMap: true
-                                }
-                            },
+                        use: ExtractTextPlugin.extract([
                             {
                                 loader: "css-loader",
                                 options: {
-                                    sourceMap: true,
+                                    minimize: true,
                                     modules: true,
                                     localIdentName: "[name]__[local]--[hash:base64:6]"
                                 }
                             },
-                            {
-                                loader: "postcss-loader",
-                                options: {
-                                    sourceMap: true
-                                }
-                            }
-                        ],
-                        exclude: [CONSTANTS.node_module_dir],
-                        include: [CONSTANTS.src]
+                            "postcss-loader"
+                        ]),
+                        exclude: [app_config.node_module_dir],
+                        include: [app_config.src]
                     },
                     {
                         test: /\.(png|svg|jpg|gif)$/,
@@ -103,11 +91,52 @@ module.exports = function(CONFIG = {}) {
                                 }
                             }
                         ],
-                        exclude: [CONSTANTS.node_module_dir],
-                        include: [CONSTANTS.src]
+                        exclude: [app_config.node_module_dir],
+                        include: [app_config.src]
                     }
                 ]
-            }
+            },
+            optimization: {
+                splitChunks: {
+                    cacheGroups: {
+                        commons: {
+                            chunks: "initial",
+                            minChunks: 2,
+                            maxInitialRequests: 5,
+                            minSize: 0
+                        },
+                        vendor: {
+                            test: /node_modules/,
+                            chunks: "initial",
+                            name: "vendor",
+                            priority: 10,
+                            enforce: true
+                        }
+                    }
+                },
+                runtimeChunk: true
+            },
+            plugins: [
+                new webpack.optimize.ModuleConcatenationPlugin(),
+                new webpack.LoaderOptionsPlugin({ minimize: true }),
+                new webpack.DefinePlugin(app_config.inject),
+                new ExtractTextPlugin({
+                    filename: "all.[contenthash:8].css",
+                    allChunks: true,
+                    ignoreOrder: true
+                }),
+                new HtmlWebpackPlugin({
+                    filename: "index.html",
+                    template: app_config.template_path,
+                    COMPILED_AT: new Date().toString(),
+                    CONFIG: {
+                        env: app_config.inject.__ENV__,
+                        debug: app_config.inject.__DEBUG__,
+                        api_path: "",
+                        meta: ""
+                    }
+                })
+            ]
         });
     });
 };
