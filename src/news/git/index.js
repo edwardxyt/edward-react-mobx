@@ -6,6 +6,7 @@ import UAParser from "ua-parser-js";
 
 let parser = new UAParser();
 console.log(parser.getResult());
+console.log(__API__, __ENV__, __DEBUG__, __PROJECT__);
 
 let main = function() {
     render(<App />, document.getElementById("main"));

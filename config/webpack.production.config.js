@@ -18,7 +18,7 @@ module.exports = function(CONFIG = {}) {
             output: {
                 filename: "bundle.js",
                 chunkFilename: "[name].[chunkhash:5].chunk.js",
-                publicPath: app_config.cdn_path,
+                // publicPath: app_config.cdn_path,  // 需要cdn 就开启
                 path: app_config.dist
             },
             devtool: "source-map",

@@ -53,3 +53,8 @@ dep 是通过 node.run 还行的 webpackconfig
 
 dep 查看效果 需要你起一个 node http server 查看，最简单的方式是安装 live-server.
 由于我公司接口绑定域名了，所以接口联调需要本机起 nginx 修改 hosts 反向代理才可以响应，所以在这里我并没有安装 dep 下的服务，请小伙伴根据自己情况 选择适合方式查看代码。
+
+### todos
+
+1.  接口注入
+2.

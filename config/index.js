@@ -1,6 +1,7 @@
 const path = require("path");
 const debug = require("debug");
 const R = require("ramda");
+const projects = require("./project");
 const isNotEmpty = R.complement(R.isEmpty);
 const isNotNil = R.complement(R.isNil);
 const echo = debug("development:bin");
@@ -8,7 +9,8 @@ const echo = debug("development:bin");
 let app_config = (rootDir = "/") => {
     let entry = process.env.npm_config_ENTRY;
     let env = process.env.NODE_ENV;
-
+    let [cluster, project] = R.split("/", entry);
+    let api_path = projects[cluster][project].api_path;
     if (isNotEmpty(entry) && isNotNil(entry)) {
         return {
             // ----------------------------------
@@ -29,6 +31,7 @@ let app_config = (rootDir = "/") => {
             // 注入前端页面 全局变量
             // ----------------------------------
             inject: {
+                __API__: JSON.stringify(api_path),
                 __ENV__: JSON.stringify(env),
                 __DEBUG__: env === "production" ? false : true,
                 __PROJECT__: JSON.stringify(entry)
@@ -42,7 +45,7 @@ let app_config = (rootDir = "/") => {
             // ----------------------------------
             // CDN 地址
             // ----------------------------------
-            cdn_path: "",
+            cdn_path: `http://cdn.example.com/static/${cluster}/${project}/`,
 
             // ----------------------------------
             // server
