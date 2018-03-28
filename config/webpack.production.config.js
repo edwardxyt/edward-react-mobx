@@ -17,7 +17,8 @@ module.exports = function(CONFIG = {}) {
             entry: ["babel-polyfill", "whatwg-fetch", app_config.main],
             mode: "development", //development' or 'production'
             output: {
-                filename: "javascripts/[name].[chunkhash:8].js",
+                filename: "javascripts/[name].[chunkhash:5].js",
+                chunkFilename: "javascripts/chunk.[name].[chunkhash:5].js",
                 publicPath: app_config.cdn_path, // 需要cdn 就开启
                 path: `${app_config.dist}/${app_config.entry}`
             },
@@ -87,7 +88,7 @@ module.exports = function(CONFIG = {}) {
                                 options: {
                                     hash: "sha512",
                                     digest: "hex",
-                                    name: "images/[name]-[hash:8].[ext]"
+                                    name: "images/[name]-[hash:5].[ext]"
                                 }
                             }
                         ],
@@ -112,9 +113,10 @@ module.exports = function(CONFIG = {}) {
                 new webpack.LoaderOptionsPlugin({ minimize: true }),
                 new webpack.DefinePlugin(app_config.inject),
                 new ExtractTextPlugin({
-                    filename: "all.[contenthash:8].css",
-                    allChunks: true,
-                    ignoreOrder: true
+                    filename: getPath => {
+                        return getPath(path.join("css", "[name].[chunkhash:5].css")).replace("css/js", "css");
+                    },
+                    allChunks: true
                 }),
                 new UglifyJsPlugin({
                     uglifyOptions: {
