@@ -57,4 +57,6 @@ dep 查看效果 需要你起一个 node http server 查看，最简单的方式
 ### todos
 
 1.  接口注入
-2.
+2.  CDN 写入配置
+3.  压缩
+4.  lives 而 ever

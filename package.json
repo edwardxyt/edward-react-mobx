@@ -12,7 +12,8 @@
     "plugins": ["transform-decorators-legacy"]
   },
   "config": {
-    "port": "7001"
+    "port": "7001",
+    "express_port": "8001"
   },
   "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "scripts": {
@@ -20,7 +21,7 @@
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
     "precompile": "node bin/del",
     "compile": "DEBUG=production:* NODE_ENV='production' node bin/compile",
-    "test": "DEBUG=test:* NODE_ENV='test' node bin/live.server"
+    "node:server": "DEBUG=test:* NODE_ENV='test' node bin/node.server"
   },
   "repository": {
     "type": "git",
@@ -51,9 +52,7 @@
     "handlebars": "^4.0.11",
     "handlebars-loader": "^1.6.0",
     "html-webpack-plugin": "^3.1.0",
-    "install": "^0.11.0",
     "ip": "^1.1.5",
-    "live-server": "^1.2.0",
     "lodash": "^4.17.5",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
@@ -67,6 +66,7 @@
     "react-router-dom": "^4.2.2",
     "rimraf": "^2.6.2",
     "style-loader": "^0.20.2",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1",

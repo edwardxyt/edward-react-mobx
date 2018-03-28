@@ -25,11 +25,10 @@ module.exports = {
     mode: "development", //development' or 'production'
     output: {
         filename: "bundle.js",
-        chunkFilename: "[name].[chunkhash:5].chunk.js",
         publicPath: "/",
         path: CONSTANTS.dist
     },
-    devtool: "eval-source-map",
+    devtool: "source-map",
     devServer: {
         // fake数据使用，如果接口是跨域的 这也可以使用
         proxy: CONSTANTS.devServer.proxy,

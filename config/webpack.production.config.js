@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
 const debug = require("debug");
 const echo = debug("production:webpack");
@@ -16,12 +17,11 @@ module.exports = function(CONFIG = {}) {
             entry: ["babel-polyfill", "whatwg-fetch", app_config.main],
             mode: "development", //development' or 'production'
             output: {
-                filename: "bundle.js",
-                chunkFilename: "[name].[chunkhash:5].chunk.js",
-                // publicPath: app_config.cdn_path,  // 需要cdn 就开启
-                path: app_config.dist
+                filename: "javascripts/[name].[chunkhash:8].js",
+                publicPath: app_config.cdn_path, // 需要cdn 就开启
+                path: `${app_config.dist}/${app_config.entry}`
             },
-            devtool: "source-map",
+            devtool: "eval-source-map",
             module: {
                 rules: [
                     {
@@ -100,21 +100,12 @@ module.exports = function(CONFIG = {}) {
                 splitChunks: {
                     cacheGroups: {
                         commons: {
-                            chunks: "initial",
-                            minChunks: 2,
-                            maxInitialRequests: 5,
-                            minSize: 0
-                        },
-                        vendor: {
-                            test: /node_modules/,
-                            chunks: "initial",
+                            test: /[\\/]node_modules[\\/]/,
                             name: "vendor",
-                            priority: 10,
-                            enforce: true
+                            chunks: "all"
                         }
                     }
-                },
-                runtimeChunk: true
+                }
             },
             plugins: [
                 new webpack.optimize.ModuleConcatenationPlugin(),
@@ -124,6 +115,12 @@ module.exports = function(CONFIG = {}) {
                     filename: "all.[contenthash:8].css",
                     allChunks: true,
                     ignoreOrder: true
+                }),
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        ie8: false,
+                        warnings: false
+                    }
                 }),
                 new HtmlWebpackPlugin({
                     filename: "index.html",

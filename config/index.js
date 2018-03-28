@@ -11,6 +11,7 @@ let app_config = (rootDir = "/") => {
     let env = process.env.NODE_ENV;
     let [cluster, project] = R.split("/", entry);
     let api_path = projects[cluster][project].api_path;
+    let cdn_path = projects[cluster][project].cdn_path;
     if (isNotEmpty(entry) && isNotNil(entry)) {
         return {
             // ----------------------------------
@@ -44,8 +45,11 @@ let app_config = (rootDir = "/") => {
 
             // ----------------------------------
             // CDN 地址
+            //
+            // 如果只有一个cdn服务器 那么写下如下
+            // cdn_path: `http://cdn.example.com/static/${cluster}/${project}/`,
             // ----------------------------------
-            cdn_path: `http://cdn.example.com/static/${cluster}/${project}/`,
+            cdn_path: cdn_path,
 
             // ----------------------------------
             // server
