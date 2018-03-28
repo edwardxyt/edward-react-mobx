@@ -43,7 +43,8 @@
 ### 启动
 
 npm run dev --ENTRY=news/demo
-npm run compile --ENTRY=news/git
+npm run compile --ENTRY=news/git --ENV="test"
+npm run compile --ENTRY=news/git --ENV="production"
 npm run node:server --ENTRY=news/git
 
 ### 简化易读
@@ -63,3 +64,4 @@ dep 查看效果 需要你起一个 node http server 查看，最简单的方式
 3.  压缩
 4.  lives 而 ever
 5.  echo
+6.  test 环境下也要输出 console

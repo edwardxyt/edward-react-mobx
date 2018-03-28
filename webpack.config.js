@@ -5,12 +5,15 @@ const ip = require("ip");
 const echo = debug("development:webpack");
 
 // 加载全局配置文件
+echo("加载配置文件");
 let app_config = require("./config")(__dirname);
+
 // 加载本地配置文件
 let settings = {};
 try {
     settings = require("./config/localhost.settings.js");
     echo("加载本地地配置。");
+    echo("合并本地地配置。");
 } catch (e) {
     echo("无本地配置文件可用！");
 }
@@ -142,7 +145,7 @@ module.exports = {
             CONFIG: {
                 env: CONSTANTS.inject.__ENV__,
                 debug: CONSTANTS.inject.__DEBUG__,
-                api_path: "",
+                api_path: CONSTANTS.inject.__API__,
                 meta: ""
             }
         }),

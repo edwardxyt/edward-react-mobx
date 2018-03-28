@@ -4,15 +4,23 @@ const R = require("ramda");
 const projects = require("./project");
 const isNotEmpty = R.complement(R.isEmpty);
 const isNotNil = R.complement(R.isNil);
-const echo = debug("development:bin");
+const echo = debug("development:config");
 
 let app_config = (rootDir = "/") => {
     let entry = process.env.npm_config_ENTRY;
-    let env = process.env.NODE_ENV;
+    let env = process.env.npm_config_ENV;
     let [cluster, project] = R.split("/", entry);
     let api_path = projects[cluster][project].api_path;
     let cdn_path = projects[cluster][project].cdn_path;
+    let Vconsole = env === "production" ? false : true;
     if (isNotEmpty(entry) && isNotNil(entry)) {
+        echo(`根路径：${rootDir}`);
+        echo(`启动项目：${cluster} - ${project}`);
+        echo(`API_PATH：${api_path}`);
+        echo(`CDN_PATH：${cdn_path}`);
+        echo(`环境：${env}`);
+        echo(`启动调试：${Vconsole}`);
+
         return {
             // ----------------------------------
             // Project Structure
@@ -22,6 +30,7 @@ let app_config = (rootDir = "/") => {
             main: path.join(rootDir, "src", `${entry}`, "index.js"), // 启动入口文件
             console: path.join(rootDir, "src", `${entry}`, "console.js"), // console入口文件
             rootDir, // 项目根目录
+            debug: Vconsole,
             src: path.resolve(rootDir, "src"), // 源码目录
             dist: path.join(rootDir, "dist"), // 编译文件
             node_module_dir: path.resolve(rootDir, "node_module"), // 依赖模块目录
@@ -35,7 +44,7 @@ let app_config = (rootDir = "/") => {
             inject: {
                 __API__: JSON.stringify(api_path),
                 __ENV__: JSON.stringify(env),
-                __DEBUG__: env === "production" ? false : true,
+                __DEBUG__: JSON.stringify(Vconsole),
                 __PROJECT__: JSON.stringify(entry)
             },
 

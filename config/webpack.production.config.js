@@ -1,15 +1,13 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
 const debug = require("debug");
 const echo = debug("production:webpack");
 
 // 加载全局配置文件
-let app_config = require(".")(path.resolve(__dirname, "../"));
-
 echo("加载配置文件");
+let app_config = require(".")(path.resolve(__dirname, "../"));
 
 module.exports = function(CONFIG = {}) {
     return new Promise(function(resolve, reject) {
@@ -22,7 +20,7 @@ module.exports = function(CONFIG = {}) {
                 publicPath: app_config.cdn_path, // 需要cdn 就开启
                 path: `${app_config.dist}/${app_config.entry}`
             },
-            devtool: "eval-source-map",
+            devtool: !!app_config.debug ? "source-map" : "eval-source-map",
             module: {
                 rules: [
                     {
@@ -98,6 +96,7 @@ module.exports = function(CONFIG = {}) {
                 ]
             },
             optimization: {
+                minimize: true,
                 splitChunks: {
                     cacheGroups: {
                         commons: {
@@ -118,12 +117,6 @@ module.exports = function(CONFIG = {}) {
                     },
                     allChunks: true
                 }),
-                new UglifyJsPlugin({
-                    uglifyOptions: {
-                        ie8: false,
-                        warnings: false
-                    }
-                }),
                 new HtmlWebpackPlugin({
                     filename: "index.html",
                     template: app_config.template_path,
@@ -131,7 +124,7 @@ module.exports = function(CONFIG = {}) {
                     CONFIG: {
                         env: app_config.inject.__ENV__,
                         debug: app_config.inject.__DEBUG__,
-                        api_path: "",
+                        api_path: app_config.inject.__API__,
                         meta: ""
                     }
                 })
