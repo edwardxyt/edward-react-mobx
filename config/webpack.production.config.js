@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
 const debug = require("debug");
-const echo = debug("production:webpack");
+const echo = debug("compile:webpack");
 
 // 加载全局配置文件
 echo("加载配置文件");

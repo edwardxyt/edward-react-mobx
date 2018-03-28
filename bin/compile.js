@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const path = require("path");
 const debug = require("debug");
 const R = require("ramda");
-const echo = debug("production:bin");
+const echo = debug("compile:bin");
 
 let entry = process.env.npm_config_ENTRY;
 let [cluster, project] = R.split("/", entry);
@@ -17,7 +17,7 @@ echo(`启动调试：${Vconsole}`);
 echo(`Vconsole文件：${consoleFile}`);
 
 webpack_production_config().then(config => {
-    echo("执行编译");
+    echo("执行编译,根据环境覆盖配置文件！");
     if (Vconsole) {
         echo("启动Vconsole,source-map");
         config.entry.push(consoleFile);

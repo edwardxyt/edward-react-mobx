@@ -20,7 +20,7 @@
     "clean": "rimraf node_modules",
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
     "precompile": "node bin/del",
-    "compile": "DEBUG=production:* node bin/compile",
+    "compile": "DEBUG=compile:* node bin/compile",
     "node:server": "DEBUG=test:* NODE_ENV='test' node bin/node.server"
   },
   "repository": {
