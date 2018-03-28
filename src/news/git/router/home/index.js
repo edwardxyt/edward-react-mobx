@@ -14,7 +14,7 @@ class Component extends React.Component {
     }
     componentWillMount() {}
     _addHandle(num) {
-        this.props.clickTimes.click(1)123;
+        this.props.clickTimes.click(1);
     }
     render() {
         return (
