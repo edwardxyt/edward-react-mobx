@@ -20,6 +20,7 @@ let app_config = (rootDir = "/") => {
             // ----------------------------------
             entry, // 启动时传入的参数，既项目目录
             main: path.join(rootDir, "src", `${entry}`, "index.js"), // 启动入口文件
+            console: path.join(rootDir, "src", `${entry}`, "console.js"), // console入口文件
             rootDir, // 项目根目录
             src: path.resolve(rootDir, "src"), // 源码目录
             dist: path.join(rootDir, "dist"), // 编译文件

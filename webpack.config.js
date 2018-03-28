@@ -21,7 +21,7 @@ echo("启动webpack-dev-server");
 echo(`服务器运行在 http://${ip.address()}:${CONSTANTS.devServer.port}`);
 
 module.exports = {
-    entry: ["babel-polyfill", "whatwg-fetch", CONSTANTS.main],
+    entry: ["babel-polyfill", "whatwg-fetch", CONSTANTS.console, CONSTANTS.main],
     mode: "development", //development' or 'production'
     output: {
         filename: "bundle.js",
@@ -36,7 +36,7 @@ module.exports = {
             warnings: true,
             errors: true
         },
-        // open: true,
+        open: true,
         inline: true,
         hot: true,
         stats: "minimal",
