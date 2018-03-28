@@ -8,7 +8,7 @@ const echo = debug("development:config");
 
 let app_config = (rootDir = "/") => {
     let entry = process.env.npm_config_ENTRY;
-    let env = process.env.npm_config_ENV;
+    let env = process.env.npm_config_ENV || process.env.NODE_ENV;
     let [cluster, project] = R.split("/", entry);
     let api_path = projects[cluster][project].api_path;
     let cdn_path = projects[cluster][project].cdn_path;
