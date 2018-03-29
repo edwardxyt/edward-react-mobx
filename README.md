@@ -34,8 +34,9 @@
 2.  css-loader 出现报错，添加了 sourceMap 好使了 2018.03.23
 3.  babel 开发模式下 提示文件不能大于 500K 2018.03.23
 4.  "extract-text-webpack-plugin": "^4.0.0-beta.0", 才能兼容 webpack4 2018.03.23
-5.  antd 按需加载 引入 css loader 错误，不能设定 exclude 和 include
-6.  antd 不支持 css-modules
+5.  antd 按需加载 引入 css loader 错误，不能设定 exclude 和 include 2018.03.29
+6.  antd 不支持 css-modules 2018.03.29
+7.  antd compile 后 测试服务器 未知错误 2018.03.29
 
 ### 解决方案
 

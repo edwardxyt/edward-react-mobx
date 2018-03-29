@@ -75,7 +75,7 @@ module.exports = {
                             ],
                             plugins: [
                                 "transform-decorators-legacy",
-                                ["import", { libraryName: "antd", style: "css" }] // `style: true` 会加载 less 文件
+                                ["import", { libraryName: "antd", libraryDirectory: "es", style: "css" }] // `style: true` 会加载 less 文件
                             ]
                         }
                     }

@@ -74,7 +74,7 @@ module.exports = function(CONFIG = {}) {
                             {
                                 loader: "css-loader",
                                 options: {
-                                    minimize: false,
+                                    minimize: true,
                                     modules: true,
                                     localIdentName: "[name]__[local]--[hash:base64:5]"
                                 }
@@ -90,7 +90,7 @@ module.exports = function(CONFIG = {}) {
                             {
                                 loader: "css-loader",
                                 options: {
-                                    minimize: false,
+                                    minimize: true,
                                     modules: false,
                                     localIdentName: "[name]__[local]--[hash:base64:5]"
                                 }
@@ -118,7 +118,7 @@ module.exports = function(CONFIG = {}) {
                 ]
             },
             optimization: {
-                minimize: false,
+                minimize: true,
                 splitChunks: {
                     cacheGroups: {
                         commons: {
