@@ -20,7 +20,7 @@
     "clean": "rimraf node_modules",
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
     "precompile": "node bin/del",
-    "compile": "DEBUG=compile:* node bin/compile",
+    "compile": "DEBUG=compile:* nodemon bin/compile",
     "node:server": "DEBUG=test:* NODE_ENV='test' node bin/node.server"
   },
   "repository": {
@@ -58,6 +58,7 @@
     "mobx-react": "^5.0.0",
     "moment": "^2.21.0",
     "moment-timezone": "^0.5.14",
+    "nodemon": "^1.17.2",
     "postcss-loader": "^2.1.3",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
