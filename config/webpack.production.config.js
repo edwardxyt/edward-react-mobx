@@ -5,6 +5,10 @@ const path = require("path");
 const debug = require("debug");
 const echo = debug("compile:webpack");
 
+// 创建多个实例
+const extractCSS = new ExtractTextPlugin(path.join("css", "[name].[chunkhash:5].css"));
+const extractVENDOR = new ExtractTextPlugin(path.join("css", "[name].[chunkhash:5].css"));
+
 // 加载全局配置文件
 echo("加载配置文件");
 let app_config = require(".")(path.resolve(__dirname, "../"));
@@ -25,7 +29,6 @@ module.exports = function(CONFIG = {}) {
                 rules: [
                     {
                         test: /\.(js|jsx)$/,
-                        // exclude: /node_modules/,
                         use: [
                             {
                                 loader: "babel-loader",
@@ -46,7 +49,10 @@ module.exports = function(CONFIG = {}) {
                                         "react",
                                         "stage-2"
                                     ],
-                                    plugins: ["transform-decorators-legacy"]
+                                    plugins: [
+                                        "transform-decorators-legacy",
+                                        ["import", { libraryName: "antd", style: "css" }] // `style: true` 会加载 less 文件
+                                    ]
                                 }
                             }
                         ],
@@ -64,19 +70,35 @@ module.exports = function(CONFIG = {}) {
                     },
                     {
                         test: /\.css$/,
-                        use: ExtractTextPlugin.extract([
+                        use: extractCSS.extract([
                             {
                                 loader: "css-loader",
                                 options: {
-                                    minimize: true,
+                                    minimize: false,
                                     modules: true,
-                                    localIdentName: "[name]__[local]--[hash:base64:6]"
+                                    localIdentName: "[name]__[local]--[hash:base64:5]"
                                 }
                             },
                             "postcss-loader"
                         ]),
-                        exclude: [app_config.node_module_dir],
-                        include: [app_config.src]
+                        include: [app_config.src],
+                        exclude: [app_config.node_module_dir]
+                    },
+                    {
+                        test: /\.css$/,
+                        use: extractVENDOR.extract([
+                            {
+                                loader: "css-loader",
+                                options: {
+                                    minimize: false,
+                                    modules: false,
+                                    localIdentName: "[name]__[local]--[hash:base64:5]"
+                                }
+                            },
+                            "postcss-loader"
+                        ]),
+                        include: [app_config.node_module_dir],
+                        exclude: [app_config.src]
                     },
                     {
                         test: /\.(png|svg|jpg|gif)$/,
@@ -96,7 +118,7 @@ module.exports = function(CONFIG = {}) {
                 ]
             },
             optimization: {
-                minimize: true,
+                minimize: false,
                 splitChunks: {
                     cacheGroups: {
                         commons: {
@@ -108,15 +130,17 @@ module.exports = function(CONFIG = {}) {
                 }
             },
             plugins: [
+                extractCSS,
+                extractVENDOR,
                 new webpack.optimize.ModuleConcatenationPlugin(),
                 new webpack.LoaderOptionsPlugin({ minimize: true }),
                 new webpack.DefinePlugin(app_config.inject),
-                new ExtractTextPlugin({
-                    filename: getPath => {
-                        return getPath(path.join("css", "[name].[chunkhash:5].css")).replace("css/js", "css");
-                    },
-                    allChunks: true
-                }),
+                // new ExtractTextPlugin({
+                //     filename: getPath => {
+                //         return getPath(path.join("css", "[name].[chunkhash:5].css")).replace("css/js", "css");
+                //     },
+                //     allChunks: true
+                // }),
                 new HtmlWebpackPlugin({
                     filename: "index.html",
                     template: app_config.template_path,

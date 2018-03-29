@@ -1,7 +1,6 @@
 .title {
-  width: 200px;
-  height: 178px;
-  margin: 20px auto;
-  color: #fff;
-  background-image: url("./image/icon.svg");
+    width: 200px;
+    height: 178px;
+    margin: 20px auto;
+    background-image: url("./image/icon.svg");
 }

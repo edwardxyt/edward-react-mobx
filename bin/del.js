@@ -1,5 +1,5 @@
 const debug = require("debug");
-const echo = debug("production:del");
+const echo = debug("compile:del");
 const del = require("del");
 
 del(["build", "dest", "dist", "cdn"]).then(paths => {
