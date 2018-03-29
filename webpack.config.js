@@ -73,10 +73,7 @@ module.exports = {
                                 "react",
                                 "stage-2"
                             ],
-                            plugins: [
-                                "transform-decorators-legacy",
-                                ["import", { libraryName: "antd", libraryDirectory: "es", style: "css" }] // `style: true` 会加载 less 文件
-                            ]
+                            plugins: ["transform-decorators-legacy"]
                         }
                     }
                 ],
@@ -116,35 +113,8 @@ module.exports = {
                         }
                     }
                 ],
-                include: [CONSTANTS.src],
-                exclude: [CONSTANTS.node_module_dir]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true,
-                            modules: false,
-                            localIdentName: "[name]__[local]--[hash:base64:6]"
-                        }
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ],
-                include: [CONSTANTS.node_module_dir],
-                exclude: [CONSTANTS.src]
+                exclude: [CONSTANTS.node_module_dir],
+                include: [CONSTANTS.src]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
