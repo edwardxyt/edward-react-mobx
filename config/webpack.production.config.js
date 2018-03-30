@@ -13,7 +13,7 @@ module.exports = function(CONFIG = {}) {
     return new Promise(function(resolve, reject) {
         resolve({
             entry: ["babel-polyfill", "whatwg-fetch", app_config.main],
-            mode: "development", //development' or 'production'
+            mode: "production",
             output: {
                 filename: "javascripts/[name].[chunkhash:5].js",
                 chunkFilename: "javascripts/chunk.[name].[chunkhash:5].js",
@@ -45,7 +45,10 @@ module.exports = function(CONFIG = {}) {
                                         "react",
                                         "stage-2"
                                     ],
-                                    plugins: ["transform-decorators-legacy"]
+                                    plugins: [
+                                        "transform-decorators-legacy",
+                                        ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
+                                    ]
                                 }
                             }
                         ],
@@ -67,15 +70,29 @@ module.exports = function(CONFIG = {}) {
                             {
                                 loader: "css-loader",
                                 options: {
-                                    minimize: true,
+                                    minimize: false,
                                     modules: true,
-                                    localIdentName: "[name]__[local]--[hash:base64:6]"
+                                    localIdentName: "src.[name]__[local]--[hash:base64:6]"
                                 }
                             },
                             "postcss-loader"
                         ]),
-                        exclude: [app_config.node_module_dir],
                         include: [app_config.src]
+                    },
+                    {
+                        test: /\.css$/,
+                        use: ExtractTextPlugin.extract([
+                            {
+                                loader: "css-loader",
+                                options: {
+                                    minimize: false,
+                                    modules: false,
+                                    localIdentName: "node_modules.[name]__[local]--[hash:base64:6]"
+                                }
+                            },
+                            "postcss-loader"
+                        ]),
+                        include: [app_config.node_module_dir]
                     },
                     {
                         test: /\.(png|svg|jpg|gif)$/,
@@ -112,7 +129,7 @@ module.exports = function(CONFIG = {}) {
                 new webpack.DefinePlugin(app_config.inject),
                 new ExtractTextPlugin({
                     filename: getPath => {
-                        return getPath(path.join("css", "[name].[chunkhash:5].css")).replace("css/js", "css");
+                        return getPath(path.join("css", "e.[name].[chunkhash:5].css"));
                     },
                     allChunks: true
                 }),

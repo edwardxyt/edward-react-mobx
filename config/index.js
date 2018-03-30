@@ -27,6 +27,7 @@ let app_config = (rootDir = "/") => {
             // 项目结构
             // ----------------------------------
             entry, // 启动时传入的参数，既项目目录
+            env,
             main: path.join(rootDir, "src", `${entry}`, "index.js"), // 启动入口文件
             console: path.join(rootDir, "src", `${entry}`, "console.js"), // console入口文件
             rootDir, // 项目根目录

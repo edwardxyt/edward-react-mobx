@@ -25,7 +25,7 @@ echo(`服务器运行在 http://${ip.address()}:${CONSTANTS.devServer.port}`);
 
 module.exports = {
     entry: ["babel-polyfill", "whatwg-fetch", CONSTANTS.console, CONSTANTS.main],
-    mode: "development", //development' or 'production'
+    mode: "development",
     output: {
         filename: "bundle.js",
         publicPath: "/",
@@ -73,7 +73,10 @@ module.exports = {
                                 "react",
                                 "stage-2"
                             ],
-                            plugins: ["transform-decorators-legacy"]
+                            plugins: [
+                                "transform-decorators-legacy",
+                                ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
+                            ]
                         }
                     }
                 ],
@@ -113,8 +116,33 @@ module.exports = {
                         }
                     }
                 ],
-                exclude: [CONSTANTS.node_module_dir],
                 include: [CONSTANTS.src]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: "style-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                            modules: false,
+                            localIdentName: "[name]__[local]--[hash:base64:6]"
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ],
+                include: [CONSTANTS.node_module_dir]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,

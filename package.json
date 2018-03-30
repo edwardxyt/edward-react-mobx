@@ -9,7 +9,10 @@
   },
   "babel": {
     "presets": ["env", "react", "stage-2"],
-    "plugins": ["transform-decorators-legacy"]
+    "plugins": [
+      "transform-decorators-legacy",
+      ["import", { "libraryName": "antd-mobile", "style": "css" }]
+    ]
   },
   "config": {
     "port": "7001",
@@ -73,5 +76,8 @@
     "webpack-dev-server": "^3.1.1",
     "whatwg-fetch": "^2.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "antd-mobile": "^2.1.8",
+    "babel-plugin-import": "^1.6.7"
+  }
 }
