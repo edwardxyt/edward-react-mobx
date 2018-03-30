@@ -70,7 +70,7 @@ module.exports = function(CONFIG = {}) {
                             {
                                 loader: "css-loader",
                                 options: {
-                                    minimize: false,
+                                    minimize: true,
                                     modules: true,
                                     localIdentName: "src.[name]__[local]--[hash:base64:6]"
                                 }
@@ -85,7 +85,7 @@ module.exports = function(CONFIG = {}) {
                             {
                                 loader: "css-loader",
                                 options: {
-                                    minimize: false,
+                                    minimize: true,
                                     modules: false,
                                     localIdentName: "node_modules.[name]__[local]--[hash:base64:6]"
                                 }
