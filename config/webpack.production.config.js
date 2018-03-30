@@ -18,7 +18,7 @@ module.exports = function(CONFIG = {}) {
                 filename: "javascripts/[name].[chunkhash:5].js",
                 chunkFilename: "javascripts/chunk.[name].[chunkhash:5].js",
                 publicPath: app_config.cdn_path, // 需要cdn 就开启
-                path: `${app_config.dist}/${app_config.entry}`
+                path: `${app_config.dist}/${app_config.entry}` // /static/PROJECT/
             },
             devtool: !!app_config.debug ? "source-map" : "eval-source-map",
             module: {
@@ -47,6 +47,7 @@ module.exports = function(CONFIG = {}) {
                                     ],
                                     plugins: [
                                         "transform-decorators-legacy",
+                                        ["import", { libraryName: "antd", libraryDirectory: "es", style: "css" }], // `style: true` 会加载 less 文件
                                         ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
                                     ]
                                 }

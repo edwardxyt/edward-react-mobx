@@ -8,17 +8,39 @@
     "node": ">= 8"
   },
   "babel": {
-    "presets": ["env", "react", "stage-2"],
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ],
     "plugins": [
       "transform-decorators-legacy",
-      ["import", { "libraryName": "antd-mobile", "style": "css" }]
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": "css"
+        }
+      ],
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "style": "css"
+        }
+      ]
     ]
   },
   "config": {
     "port": "7001",
     "express_port": "8001"
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "scripts": {
     "clean": "rimraf node_modules",
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
@@ -30,7 +52,10 @@
     "type": "git",
     "url": "git+https://github.com/edwardxyt/edward-react-mobx.git"
   },
-  "keywords": ["react", "mobx"],
+  "keywords": [
+    "react",
+    "mobx"
+  ],
   "author": "xiayuting <56833517@qq.com> (https://github.com/edwardxyt)",
   "license": "MIT",
   "bugs": {
@@ -77,6 +102,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
+    "antd": "^3.3.3",
     "antd-mobile": "^2.1.8",
     "babel-plugin-import": "^1.6.7"
   }
