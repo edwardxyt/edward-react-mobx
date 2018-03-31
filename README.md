@@ -1,4 +1,4 @@
-# edward-React-Mobx 一款结构简单、功能强大、扩展性强的脚手架。
+# edward-React-Mobx 结构简单、功能强大、扩展性强的脚手架
 
 ## 需求配置
 
