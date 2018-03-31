@@ -43,7 +43,7 @@ $ npm run dev --ENTRY=news/demo                               # 启动src/news/d
 $ npm run dev --ENTRY=news/git --MOBILE=true                  # 启动src/news/git下的 mian.js （development、antd-mobile）
 $ npm run compile --ENTRY=news/demo --ENV=production          # 启动src/news/demo下的 mian.js （production、antd）
 $ npm run compile --ENTRY=news/git --ENV=test --MOBILE=true   # 启动src/news/git下的 mian.js （test、antd-mobile）
-$ npm run tree   # 查看已有项目列表
+$ npm run tree                                                # 查看已有项目列表
 ```
 
 开发过程中，你用得最多的会是`npm dev`，但是这里还有很多其它的处理：
@@ -55,33 +55,33 @@ $ npm run tree   # 查看已有项目列表
 | `node:server`      | --ENTRY                   | 开启测试服务器传入--ENTRY 项目目录                                       |
 | `tree`             | 无                        | 提示已有项目目录列表                                                     |
 
-| `npm run --参数解释` | 值                          | 解释                     |
-| -------------------- | --------------------------- | ------------------------ |
-| `--ENTRY`            | 例如：--ENTRY==news/git     | src 目录下的目录结构     |
-| `--MOBILE`           | true or false               | 开启 antd or antd-mobile |
-| `--ENV`              | development production test | 环境模式                 |
+| `npm run --parameters` | 值                          | 解释                     |
+| ---------------------- | --------------------------- | ------------------------ |
+| `--ENTRY`              | 例如：--ENTRY==news/git     | src 目录下的目录结构     |
+| `--MOBILE`             | true or false               | 开启 antd or antd-mobile |
+| `--ENV`                | development production test | 环境模式                 |
 
 ## 程序目录
 
 ```
 .
 ├── README.md
-├── bin
-│   ├── compile.js
-│   ├── del.js
-│   ├── node.server.js
-│   └── tree.js
-├── config
-│   ├── index.js
-│   ├── localhost.settings.js
-│   ├── project.js
-│   └── webpack.production.config.js
-├── dist
+├── bin  //执行文件
+│   ├── compile.js  //编译
+│   ├── del.js  //删除dist
+│   ├── node.server.js  //测试服务器
+│   └── tree.js  //已有项目列表
+├── config  //配置文件
+│   ├── index.js  //变量配置文件
+│   ├── localhost.settings.js  //本地覆盖配置文件
+│   ├── project.js  //api & cdn 映射文件
+│   └── webpack.production.config.js  //production时启用的
+├── dist  //编译后的文件
 ├── package.json
 ├── postcss.config.js
-├── src
+├── src  //源码
 │   └── news
 │       ├── demo
 │       └── git
-├── webpack.config.js
+├── webpack.config.js  //development时启用的
 ```
