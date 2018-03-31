@@ -2,7 +2,7 @@
 
 ## 需求配置
 
-* node -v `~v8.9.1`
+* node ">= 8"
 * babel
 * webpack
 * no eslint 如果你喜欢可以自己添加
@@ -30,6 +30,21 @@ edward-React-Mobx, 是基于 webpack4 react16.2 mobx5 react-router4 搭建的一
 15. axios、fetch
 
 note：部署推荐使用 nginx 处理。
+
+## 开始
+
+目前 src 下有两个例子 git 和 demo（多项目多栏目根据目录结构），前者是手机端借鉴了[sanyuelanv](https://github.com/sanyuelanv/react-mobx-project)的案例并添加了 antd-mobile。后者是 web 的添加了 antd。
+
+```bash
+$ git clone https://github.com/edwardxyt/edward-react-mobx.git
+$ cd edward-react-mobx
+$ npm install                                                 # 安装
+$ npm run dev --ENTRY=news/demo                               # 启动src/news/demo下的 mian.js （development、antd）
+$ npm run dev --ENTRY=news/git --MOBILE=true                  # 启动src/news/git下的 mian.js （development、antd-mobile）
+$ npm run compile --ENTRY=news/demo --ENV=production          # 启动src/news/demo下的 mian.js （production、antd）
+$ npm run compile --ENTRY=news/git --ENV=test --MOBILE=true   # 启动src/news/git下的 mian.js （test、antd-mobile）
+$ npm run tree   # 查看已有项目列表
+```
 
 开发过程中，你用得最多的会是`npm dev`，但是这里还有很多其它的处理：
 
