@@ -46,10 +46,15 @@
 
 ### 启动
 
-npm run dev --ENTRY=news/demo
-npm run compile --ENTRY=news/git --ENV="test"
-npm run compile --ENTRY=news/git --ENV="production"
+npm run dev --ENTRY=news/demo // 开发模式 news/demo 项目 antd
+npm run dev --ENTRY=news/git --MOBILE=true // 开发模式 news/git 项目 antd-mobile
+
+npm run compile --ENTRY=news/demo --ENV="test"
+npm run compile --ENTRY=news/git --ENV="production" --MOBILE=true
+
 npm run node:server --ENTRY=news/git
+
+npm run tree
 
 ### 简化易读
 

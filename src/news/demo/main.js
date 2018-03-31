@@ -11,7 +11,7 @@ const edward = {
     edward: "xiayuting"
 };
 console.log("我是index.js");
-console.log(__ENV__, __DEBUG__, __PROJECT__);
+console.log(__API__, __ENV__, __DEBUG__, __MOBILE__, __PROJECT__);
 
 class App extends React.Component {
     render() {

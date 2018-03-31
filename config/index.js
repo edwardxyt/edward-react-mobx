@@ -13,8 +13,11 @@ let app_config = (rootDir = "/") => {
     let api_path = projects[cluster][project].api_path;
     let cdn_path = projects[cluster][project].cdn_path;
     let Vconsole = env === "production" ? false : true;
+    let mobile = !!process.env.npm_config_MOBILE;
+
     if (isNotEmpty(entry) && isNotNil(entry)) {
         echo(`根路径：${rootDir}`);
+        echo(`移动开发：${mobile}`);
         echo(`启动项目：${cluster} - ${project}`);
         echo(`API_PATH：${api_path}`);
         echo(`CDN_PATH：${cdn_path}`);
@@ -28,7 +31,9 @@ let app_config = (rootDir = "/") => {
             // ----------------------------------
             entry, // 启动时传入的参数，既项目目录
             env,
-            main: path.join(rootDir, "src", `${entry}`, "index.js"), // 启动入口文件
+            mobile: mobile,
+            antd: mobile ? ["import", { libraryName: "antd-mobile", style: "css" }] : ["import", { libraryName: "antd", libraryDirectory: "es", style: "css" }],
+            main: path.join(rootDir, "src", `${entry}`, "main.js"), // 启动入口文件
             console: path.join(rootDir, "src", `${entry}`, "console.js"), // console入口文件
             rootDir, // 项目根目录
             debug: Vconsole,
@@ -46,6 +51,7 @@ let app_config = (rootDir = "/") => {
                 __API__: JSON.stringify(api_path),
                 __ENV__: JSON.stringify(env),
                 __DEBUG__: JSON.stringify(Vconsole),
+                __MOBILE__: JSON.stringify(mobile),
                 __PROJECT__: JSON.stringify(entry)
             },
 

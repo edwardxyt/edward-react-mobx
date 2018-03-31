@@ -8,11 +8,7 @@
     "node": ">= 8"
   },
   "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ],
+    "presets": ["env", "react", "stage-2"],
     "plugins": [
       "transform-decorators-legacy",
       [
@@ -36,26 +32,20 @@
     "port": "7001",
     "express_port": "8001"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "scripts": {
     "clean": "rimraf node_modules",
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
     "precompile": "DEBUG=compile:* node bin/del",
     "compile": "DEBUG=compile:* node bin/compile",
+    "tree": "DEBUG=tree:* node bin/tree",
     "node:server": "DEBUG=test:* NODE_ENV='test' nodemon bin/node.server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edwardxyt/edward-react-mobx.git"
   },
-  "keywords": [
-    "react",
-    "mobx"
-  ],
+  "keywords": ["react", "mobx"],
   "author": "xiayuting <56833517@qq.com> (https://github.com/edwardxyt)",
   "license": "MIT",
   "bugs": {
@@ -77,10 +67,12 @@
     "del": "^3.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.9",
+    "glob": "^7.1.2",
     "handlebars": "^4.0.11",
     "handlebars-loader": "^1.6.0",
     "html-webpack-plugin": "^3.1.0",
     "ip": "^1.1.5",
+    "js2excel": "^1.0.0",
     "lodash": "^4.17.5",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
@@ -94,12 +86,14 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "rimraf": "^2.6.2",
+    "shelljs": "^0.8.1",
     "style-loader": "^0.20.2",
     "vconsole": "^3.1.0",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "yargs": "^11.0.0"
   },
   "dependencies": {
     "antd": "^3.3.3",
