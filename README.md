@@ -1,76 +1,74 @@
 # edward-React-Mobx
 
-## 初衷
+## 需求配置
 
-由于 2018 年 react 技术栈，包括工具有整体版本提升。reaact(16.2)，react-router(4x)，webpack(4x)等等。从新写一套可以支持多环境，多项目，分别 build 的 react 脚手架。只为了实现 SPA 单页应用。部署需要 nginx。
+* node -v `~v8.9.1`
+* babel
+* webpack
+* no eslint 如果你喜欢可以自己添加
 
-### 问题
+## 一、简介
 
-1.   环境有 development' 'production' 'test'，要区分是否压缩，是否生成 map，是否可调试，后端接口地址, 是否是移动端等问题；
-2.  多项目，一套架构可以多入口，分别编译；
-3.  配置文件统一 合并或覆盖，根据多项目多环境不同接口;
-4.  html 文件，需要添加额外非 react 组件，要使用模板引擎 hbs;
-5.  路由拦截实现;
-6.  ajax 封装并统一错误处理;
-7.  编译策略 根据多环境;
-8.  代理问题;
-9.  按需加载;
-10. 工具函数库;
-11. UI 库;
+一款结构简单、功能强大、扩展性强的脚手架。
 
-### 思路
+edward-React-Mobx, 是基于 webpack4 react16.2 mobx5 react-router4 搭建的一套 spa 静态文件编译的脚手架。
 
-1.  npm script 传参 包括（项目名、接口地址）
-2.  dev、dep、test scripts 区分环境
-3.  接口地址写入配置文件 
-4.  提取配置文件策略，1.多次使用的字段 2.如果只用到一次，有可能在开发过程中变动的字段，既写入配置文件 反之不写入
-5.  端口号为什么没有写入配置文件 而是写入了 pg，因为快捷修改启动代码而不需要 修改源码
-6.  生成版本，不需要本地配置文件 所以不加载
-7.  build 如果使用 babel-plugin-import 就报错，手动加载没问题
+主要特性包括：
 
-### 新问题
+1.  支持多域名，多项目下，一套 Ract 全家桶静态部署开发。
+2.  区分 development' 'production' 'test'3 种环境。
+3.  配置文件统一 合并或覆盖;
+4.  模板引擎 hbs 用于入口模板；
+5.  启动编译可传入参数如 --ENTRY --ENV --MOBILE。
+6.  根据--ENTRY 来启动某一个项目或启动某一项目的测试服务器。
+7.  根据--MOBILE 来识别启用 antd 还是 antd-mobile UI 框架。
+8.  根据--ENV 开启 Vconsole、debug、或者 build 策略等。
+9.  react-router4 按需加载。
+10. 使用 css-modules.
+11. 使用 lodash 或 ramda 函数库。
+12. 本地测试服务器使用 express 并 nodemon 守护进程。
+13. webpack-dev-server 开发时服务器。
+14. moment.js 时间处理。
+15. axios、fetch
 
-1.  如果在 bin 中执行 webpack 是否会更好 2018.03.22
-2.  css-loader 出现报错，添加了 sourceMap 好使了 2018.03.23
-3.  babel 开发模式下 提示文件不能大于 500K 2018.03.23
-4.  "extract-text-webpack-plugin": "^4.0.0-beta.0", 才能兼容 webpack4 2018.03.23
-5.  antd 按需加载 引入 css loader 错误，不能设定 exclude 和 include 2018.03.29
-6.  antd 不支持 css-modules 2018.03.29
-7.  antd compile 后 测试服务器 未知错误 2018.03.29 "libraryDirectory": "es" 原因
+note：部署推荐使用 nginx 处理。
 
-### 解决方案
+开发过程中，你用得最多的会是`npm dev`，但是这里还有很多其它的处理：
 
-1.  环境通过 npm script 传入 **ENV**
-2.  **DEBUG** 通过判断 **ENV**来判断
-3.  **CLUSTER** **PROJECT** 项目名与活动名 通过 node 传入
+| `npm run <script>` | 参数                      | 解释                                                                     |
+| ------------------ | ------------------------- | ------------------------------------------------------------------------ |
+| `dev`              | --ENTRY 、--MOBILE        | 启动开发服务器、传入--ENTRY 项目目录 。--MOBILE 开启 antd 或 antd-mobile |
+| `compile`          | --ENTRY 、--MOBILE、--ENV | 启动编译、--ENV 传入测试或生成，                                         |
+| `node:server`      | --ENTRY                   | 开启测试服务器传入--ENTRY 项目目录                                       |
+| `tree`             | 无                        | 提示已有项目目录列表                                                     |
 
-### 启动
+| `npm run --参数解释` | 值                          | 解释                     |
+| -------------------- | --------------------------- | ------------------------ |
+| `--ENTRY`            | 例如：--ENTRY==news/git     | src 目录下的目录结构     |
+| `--MOBILE`           | true or false               | 开启 antd or antd-mobile |
+| `--ENV`              | development production test | 环境模式                 |
 
-npm run dev --ENTRY=news/demo // 开发模式 news/demo 项目 antd
-npm run dev --ENTRY=news/git --MOBILE=true // 开发模式 news/git 项目 antd-mobile
+## 程序目录
 
-npm run compile --ENTRY=news/demo --ENV="test"
-npm run compile --ENTRY=news/git --ENV="production" --MOBILE=true
-
-npm run node:server --ENTRY=news/git
-
-npm run tree
-
-### 简化易读
-
-有些人喜欢把 webpack 做成 base.config、然后合并对象。生成对应的 development' or 'production'。但是我并不喜欢这种方式 首先模式下 只有 3 种 development' or 'production' 'test'。然后解耦的也并不是很多。且不易于读。我的策略是 不提取 baseConfg，只做整体项目的配置文件。这样易读 易于修改。
-
-dev 是用的是 webpack-cli 启动
-dep 是通过 node.run 还行的 webpackconfig
-
-dep 查看效果 需要你起一个 node http server 查看，最简单的方式是安装 live-server.
-由于我公司接口绑定域名了，所以接口联调需要本机起 nginx 修改 hosts 反向代理才可以响应，所以在这里我并没有安装 dep 下的服务，请小伙伴根据自己情况 选择适合方式查看代码。
-
-### todos
-
-1.  接口注入
-2.  CDN 写入配置
-3.  压缩
-4.  lives 而 ever
-5.  echo
-6.  test 环境下也要输出 console
+```
+.
+├── README.md
+├── bin
+│   ├── compile.js
+│   ├── del.js
+│   ├── node.server.js
+│   └── tree.js
+├── config
+│   ├── index.js
+│   ├── localhost.settings.js
+│   ├── project.js
+│   └── webpack.production.config.js
+├── dist
+├── package.json
+├── postcss.config.js
+├── src
+│   └── news
+│       ├── demo
+│       └── git
+├── webpack.config.js
+```
