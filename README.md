@@ -28,12 +28,17 @@ edward-React-Mobx, 是基于 webpack4 react16.2 mobx5 react-router4 搭建的一
 13. webpack-dev-server 开发时服务器。
 14. moment.js 时间处理。
 15. axios、fetch
+16. ua-parser-js User-Agent 查看等
 
 note：部署推荐使用 nginx 处理。
 
 ## 开始
 
 目前 src 下有两个例子 git 和 demo（多项目多栏目根据目录结构），前者是手机端借鉴了[sanyuelanv](https://github.com/sanyuelanv/react-mobx-project)的案例并添加了 antd-mobile。后者是 web 的添加了 antd。
+
+常用需要修改的，都在 config/index.js 里。除了 port 写在了 pkg 里，原因很简单，当你初次使用时，打开的是 pkg。启动 port 就在那直接修改。而不需要看源码。更暴力
+
+页面中注入了 5 个变量分别是：**API**, **ENV**, **DEBUG**, **MOBILE**, **PROJECT**
 
 ```bash
 $ git clone https://github.com/edwardxyt/edward-react-mobx.git
