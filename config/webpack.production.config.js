@@ -72,6 +72,7 @@ module.exports = function(CONFIG = {}) {
                                     localIdentName: "src.[name]__[local]--[hash:base64:6]"
                                 }
                             },
+                            "resolve-url-loader",
                             "postcss-loader"
                         ]),
                         include: [app_config.src]

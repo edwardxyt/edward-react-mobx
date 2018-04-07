@@ -107,6 +107,12 @@ module.exports = {
                         }
                     },
                     {
+                        loader: "resolve-url-loader",
+                        options: {
+                            debug: true
+                        }
+                    },
+                    {
                         loader: "postcss-loader",
                         options: {
                             sourceMap: true

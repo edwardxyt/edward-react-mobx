@@ -1,7 +1,31 @@
 .title {
-  width: 200px;
-  height: 178px;
-  margin: 20px auto;
-  color: #fff;
-  background-image: url("./image/icon.svg");
+    width: 200px;
+    height: 178px;
+    margin: 20px auto;
+    color: #fff;
+    background-image: url("./image/icon.svg");
+}
+/* table-custom-styles.css */
+/* .table {
+    composes: table from "./table.css";
+} */
+
+/* .row {
+    composes: row from "./table.css";
+} */
+
+/* .cell {
+    composes: cell from './table.css';
+} */
+
+.table {
+    width: 400px;
+}
+
+.cell {
+    float: left;
+    width: 154px;
+    background: #eee;
+    padding: 10px;
+    margin: 10px 0 10px 10px;
 }
