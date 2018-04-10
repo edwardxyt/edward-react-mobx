@@ -1,0 +1,328 @@
+.productBg {
+    background: #ebebee;
+    height: auto;
+    padding-bottom: 114px;
+}
+
+.banner {
+    width: 100%;
+    height: 400px;
+    background: url("../../images/current/banner.png") no-repeat center;
+    background-size: cover;
+    text-align: center;
+    color: #94c1e4;
+}
+
+.top {
+    width: 100%;
+    height: 140px;
+    font-size: 22px;
+    padding: 70px 0;
+}
+
+.total {
+    font-size: 70px;
+    color: #fff;
+}
+
+.rewards {
+    font-size: 32px;
+    color: #fff;
+    margin: 0 10px;
+}
+
+.down {
+    width: 600px;
+    height: 60px;
+    background: rgba(21, 33, 57, 0.6);
+    display: table;
+    padding: 30px 60px;
+    font-size: 22px;
+}
+
+.downItem {
+    width: 33.3%;
+    height: 100%;
+    float: left;
+}
+
+.itemDown {
+    font-size: 30px;
+    color: #fff;
+}
+
+.step {
+    width: 610px;
+    height: 110px;
+    padding: 30px 60px 30px 50px;
+    display: table;
+    background: #ffffff;
+}
+
+.stepItem {
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-size: 22px;
+    color: #555555;
+}
+
+.stepDown {
+    margin-top: 10px;
+}
+
+.ruler {
+    margin-top: 20px;
+    background: #ffffff;
+}
+
+.rulerTitle {
+    width: 690px;
+    padding-left: 30px;
+    height: 74px;
+    line-height: 74px;
+    color: #333333;
+    font-size: 30px;
+}
+
+.rulerText {
+    position: relative;
+    width: 660px;
+    height: 127px;
+    padding: 0 30px;
+    font-size: 22px;
+    color: #555;
+}
+
+.pic {
+    width: 100%;
+    height: auto;
+    padding: 35px 0 0 30px;
+}
+
+.pic span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pot {
+    width: 21px;
+    height: 21px;
+    background: url("../../images/current/icon-pot.png") no-repeat center;
+}
+
+.line1 {
+    width: 162px;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: #4aa1f9;
+    margin: 0 10px;
+}
+
+.line2 {
+    width: 327px;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: #4aa1f9;
+    margin: 0 10px;
+}
+
+.des {
+    width: 100%;
+    display: table;
+    margin-top: 10px;
+}
+
+.desItem {
+    float: left;
+    text-align: center;
+}
+
+.desItem1 {
+    width: 90px;
+}
+
+.desItem2 {
+    width: 306px;
+}
+
+.desItem3 {
+    width: 258px;
+    text-align: right;
+}
+
+.lockDate {
+    position: absolute;
+    top: 12px;
+    left: 124px;
+    color: #3191f3;
+}
+
+.freeDate {
+    position: absolute;
+    top: 12px;
+    right: 198px;
+    color: #3191f3;
+}
+
+.iconLock {
+    display: inline-block;
+    width: 20px;
+    height: 22px;
+    background: url("../../images/current/icon-lock.png") no-repeat center;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.iconFree {
+    composes: iconLock;
+    background: url("../../images/current/icon-circle.png") no-repeat center;
+}
+
+.iconText {
+    vertical-align: middle;
+}
+
+.des1 {
+    position: absolute;
+    bottom: 43px;
+    left: 115px;
+    font-size: 20px;
+    color: #aaaaaa;
+}
+
+.des2 {
+    composes: des1;
+    left: 400px;
+}
+
+.detail {
+    background: #ffffff;
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+}
+
+.detailTitle {
+    width: 690px;
+    margin-left: 30px;
+    height: 74px;
+    line-height: 74px;
+    font-size: 30px;
+    color: #333333;
+    border-bottom: 1px solid #e3e5ea;
+}
+
+.detailText {
+    width: 660px;
+    height: auto;
+    padding: 0 30px;
+    font-size: 24px;
+    color: #555555;
+    line-height: 36px;
+}
+
+.detailSubtitle {
+    margin-top: 30px;
+}
+
+.learnMore {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    font-size: 24px;
+    color: #4aa1f9;
+    text-align: center;
+}
+
+.learnMore span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.iconArrow {
+    width: 13px;
+    height: 20px;
+    background: url("../../images/current/icon-arrow.png") no-repeat center;
+    margin-left: 10px;
+}
+
+.links {
+    margin-top: 20px;
+    background: #fff;
+}
+
+.linksItem {
+    display: table;
+    width: 690px;
+    margin-left: 30px;
+    height: 88px;
+    line-height: 88px;
+    border-bottom: 1px solid #e3e5ea;
+    font-size: 28px;
+    color: #333333;
+}
+
+.linksLeft {
+    float: left;
+}
+
+.linksRight {
+    float: right;
+
+}
+
+.iconFaq {
+    display: inline-block;
+    width: 31px;
+    height: 36px;
+    background: url("../../images/current/icon-faq.png") no-repeat center;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.iconPro {
+    composes: iconFaq;
+    background: url("../../images/current/icon-parper.png") no-repeat center;
+}
+
+.linksRight {
+    width: 16px;
+    height: 26px;
+    background: url("../../images/current/arrow.png") no-repeat center;
+    margin: 32px 30px 0 0;
+}
+
+.tips {
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    font-size: 24px;
+    color: #999;
+    line-height: 80px;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 114px;
+    background: #fff;
+    box-shadow: -0px -3px 15px 0 rgba(0, 0, 0, 0.11);
+}
+
+.bText {
+    width: 660px;
+    height: 74px;
+    border-radius: 5px;
+    background-color: #fd4d4c;
+    margin: 20px auto;
+    font-size: 32px;
+    color: #fff;
+    line-height: 74px;
+    text-align: center;
+}
+
+
+

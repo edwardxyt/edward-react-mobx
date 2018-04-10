@@ -1,0 +1,41 @@
+.bg {
+    min-height: 100%;
+    background: #ebebee;
+    text-align: center;
+}
+
+.banner {
+    margin: 100px auto 10px;
+    display: block;
+}
+
+.success-title {
+    padding: 0 0 10px;
+    font-size: 44px;
+    line-height: 50px;
+    color: #5799e8;
+    margin: 10px auto 30px;
+}
+
+.desc {
+    font-size: 30px;
+    height: 60px;
+    line-height: 40px;
+    color: #a9b1b5;
+}
+
+.desc span {
+    color: #fd4d4c;
+}
+
+.btn {
+    display: block;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    border-radius: 5px;
+    background-color: #fd4d4c;
+    margin: 30px;
+}

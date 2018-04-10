@@ -1,0 +1,221 @@
+.recordsPanel {
+    height: 100%;
+    display: table;
+    background-color: #ebebee;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.colorRed {
+    color: #fd4d4c;
+}
+
+.reserveItem {
+    width: 100%;
+    min-height: 360px;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #fff;
+    color: #555;
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+.cancelstyle {
+    width: 100%;
+    min-height: 360px;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #fff;
+    color: #ccc;
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+.cancelstyle .colorRed {
+    color: #ccc;
+}
+
+.itemHeader {
+    width: 690px;
+    height: 70px;
+    border-bottom: 1px solid #d8d8d8;
+    font-size: 30px;
+    color: #333;
+    padding: 30px 0 30px 30px;
+}
+
+.itemHeaderLeft {
+    float: left;
+    font-size: 36px;
+}
+
+.itemHeaderRight {
+    float: right;
+}
+
+.infoContainer {
+    padding-top: 20px;
+}
+
+.infoItem {
+    width: 690px;
+    margin-left: 30px;
+    height: 60px;
+    line-height: 60px;
+    display: table;
+    font-size: 26px;
+}
+
+.infoItem:last-child {
+    border-bottom: 1px solid #d8d8d8;
+    padding-bottom: 20px;
+}
+
+.infoItemLeft {
+    float: left;
+}
+
+.infoProtocol {
+    padding: 10px 0;
+}
+
+.itemHeaderRight {
+    float: right;
+    font-size: 28px;
+    margin-right: 30px;
+}
+
+.cancelBtn {
+    width: 140px;
+    height: 54px;
+    line-height: 54px;
+    text-align: center;
+    color: #7c9dc7;
+    font-size: 24px;
+    margin-top: 4px;
+    border: 2px solid #7c9dc7;
+    border-radius: 36px;
+}
+
+.protocolLook {
+    color: #4aa1f9;
+}
+
+.emptyPanel {
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    color: #8591b3;
+}
+
+.emptyPanel img {
+    margin-bottom: 10px;
+    margin-top: 150px;
+    width: 40%;
+}
+
+.tabWrapper {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding-left: 90px;
+    height: 84px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAABUAgMAAADWh+joAAAADFBMVEX////r6+7Y2Njw8PKbCcP3AAAAUElEQVRo3u3UsQ0AIRADwZO+gK+OJqmC0qgBAnSWZmIHG7kAAAAAAJr668q3DsaigSYi3yMyGmgg8j0io4EGIt8jMhoAAAAAeGUEEv1KzUAbvsYxdKbypygAAAAASUVORK5CYII=") no-repeat center;
+    display: table;
+    z-index: 99;
+    position: fixed;
+    top: 87px;
+    left: 0;
+}
+
+.tabWrapperIos {
+    composes: tabWrapper;
+    top: 126px;
+    left: 0;
+}
+
+.tab_item {
+    float: left;
+    line-height: 84px;
+    font-size: 28px;
+    color: #555;
+    text-align: center;
+}
+
+.tab_item_0 {
+    width: 100px;
+    margin-right: 100px;
+}
+
+.tab_item_1 {
+    width: 135px;
+    margin-right: 100px;
+}
+
+.tab_item_2 {
+    width: 100px;
+}
+
+.tab_on {
+    border-bottom: 4px solid #fd4d4c;
+    color: #fd4d4c;
+}
+
+.textWrapper {
+    width: 100%;
+    min-height: 500px;
+    margin-top: 104px;
+    padding-bottom: 30px;
+}
+
+.arrow {
+    width: 16px;
+    height: 30px;
+    background: url("../../images/reserve-bid/records/arrow.png") no-repeat 0 4px;
+    display: inline-block;
+    margin-left: 10px;
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+.headerOn {
+    color: #4aa1f9;
+}
+
+.icon-status {
+    width: 41px;
+    height: 100%;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.icon-status0 {
+    background: url("../../images/reserve-bid/records/icon-on.png") no-repeat center;
+}
+
+.icon-status1 {
+    background: url("../../images/reserve-bid/records/icon-over.png") no-repeat center;
+}
+
+.icon-status2 {
+    background: url("../../images/reserve-bid/records/icon-cancel.png") no-repeat center;
+}
+
+.statusText {
+    width: 270px;
+    height: 100%;
+    display: inline-block;
+}
+
+.statusNum {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.sprit {
+    color: #999;
+    padding: 0 5px;
+    font-weight: 500;
+}

@@ -1,0 +1,81 @@
+.recordsBg {
+    background: #ebebee;
+    height: 100%;
+    font-size: 28px;
+    color: #555;
+}
+
+.tabSection {
+    width: 444px;
+    background: #fff;
+    height: 88px;
+    text-align: center;
+    display: table;
+    padding: 0 138px;
+}
+
+.tabItem {
+    width: 74px;
+    margin: 0 18px;
+    height: 84px;
+    line-height: 84px;
+    float: left;
+}
+
+.tabItemOn {
+    composes: tabItem;
+    border-bottom: 4px solid #fd4d4c;
+}
+
+.content {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    margin-top: 20px;
+}
+
+.contentItem {
+    width: 660px;
+    height: 72px;
+    margin-left: 30px;
+    border-bottom: 1px solid #e3e5ea;
+    padding: 30px 30px 30px 0;
+}
+
+.contentItem:last-child {
+    border-bottom: 0 none;
+}
+
+.itemLine {
+    display: table;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+
+.itemLeft {
+    float: left;
+}
+
+.itemRight {
+    float: right;
+}
+
+.colorRed {
+    color: #fd4d4c;
+}
+
+.colorGreen {
+    color: #4db94f;
+}
+
+.itemTitle {
+    font-size: 30px;
+    color: #000;
+}
+
+.itemDown {
+    font-size: 24px;
+    color: #999;
+    margin-top: 5px;
+}

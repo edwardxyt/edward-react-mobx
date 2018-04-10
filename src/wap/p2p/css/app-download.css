@@ -1,0 +1,41 @@
+.appDownload-box {
+    background: white;
+    text-align: center;
+    color: #333;
+}
+
+.appDownload-box img {
+    display: block;
+    width: 100%;
+}
+
+.appDownload-box a img {
+    width: 70%;
+    margin: 35px auto 0;
+}
+
+.hr {
+    height: 1px;
+    background: gray;
+    margin: 45px;
+    opacity: 0.3;
+}
+
+.big-text {
+    text-align: center;
+    font-size: 40px;
+    margin: 15px auto 25px;
+}
+
+.small-text {
+    text-align: center;
+    font-size: 14px;
+    line-height: 32px;
+    margin: 25px auto;
+}
+
+.copyright {
+    font-size: 30px;
+    text-align: center;
+    margin: 120px auto 60px;
+}

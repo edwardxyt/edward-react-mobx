@@ -1,0 +1,322 @@
+.infoPanel {
+    height: auto;
+    background-color: #ebebee;
+    color: #555;
+    padding-bottom: 138px;
+    overflow: hidden;
+}
+
+.topInfo {
+    width: 100%;
+    height: 280px;
+    background: url("../../images/novice-bid/info/banner.png") no-repeat center;
+    display: table;
+    font-size: 22px;
+    color: #fff;
+    position: relative;
+}
+
+.flag {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url("../../images/novice-bid/info/icon-flag.png") no-repeat center;
+}
+
+.infoRate {
+    width: 359px;
+    float: left;
+    margin: 76px auto 30px;
+    text-align: center;
+}
+
+.rateUp, .dateUp {
+    font-size: 60px;
+}
+
+.rateUp .percent {
+    font-size: 24px;
+    padding-left: 5px;
+}
+
+.dateUp .percent {
+    font-size: 24px;
+    padding-left: 5px;
+}
+
+.garyGap {
+    width: 2px;
+    height: 95px;
+    float: left;
+    background-color: #8690ae;
+    margin-top: 84px;
+}
+
+.infoDate {
+    width: 359px;
+    float: right;
+    margin: 76px auto 30px;
+    text-align: center;
+}
+
+.rateDown {
+    color: #a3c5df;
+}
+
+.tipsBox {
+    width: 100%;
+    height: 28px;
+    display: table;
+    text-align: center;
+}
+
+.tipsBox .tipsItem {
+    font-size: 22px;
+    color: #3d4860;
+    background-color: #fff;
+    border: 1px solid #5b7aa4;
+    padding: 3px 8px;
+    border-radius: 30px;
+}
+
+.timeLine {
+    width: 660px;
+    height: 83px;
+    padding: 30px;
+    background: #fff;
+    display: table;
+    margin-bottom: 20px;
+}
+
+.fLine {
+    font-size: 24px;
+    color: #4aa1f9;
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+
+.fLineItem {
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+
+.fLineItem1 {
+    width: 24%;
+}
+
+.fLineItem2 {
+    width: 52%;
+}
+
+.fLineItem3 {
+    width: 24%;
+}
+
+.sLine {
+    width: 543px;
+    height: 21px;
+    background: url("../../images/novice-bid/info/timeline.png") no-repeat center;
+    margin: 10px auto;
+}
+
+.tLine .fLineItem {
+    color: #555;
+}
+
+.flowBox {
+    width: 100%;
+    height: 243px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.flowHeader {
+    width: 690px;
+    height: 70px;
+    padding-left: 30px;
+    background-color: #fff;
+    font-size: 28px;
+    color: #333;
+    line-height: 70px;
+}
+
+.flowContent {
+    width: 674px;
+    height: 138px;
+    padding: 10px 21px 25px 25px;
+    background-color: #ffffff;
+    display: table;
+    position: relative;
+}
+
+.tabItem {
+    width: 25%;
+    height: 100%;
+    float: left;
+    font-size: 22px;
+    color: #555555;
+    text-align: center;
+}
+
+.itemUp {
+    width: 80px;
+    height: 80px;
+    margin: 5px auto;
+    margin-bottom: 10px;
+}
+
+.itemUp1 {
+    background: url("../../images/novice-bid/info/icon-feature1.png") no-repeat center;
+}
+
+.itemUp2 {
+    background: url("../../images/novice-bid/info/icon-feature2.png") no-repeat center;
+}
+
+.itemUp3 {
+    background: url("../../images/novice-bid/info/icon-feature3.png") no-repeat center;
+}
+
+.itemUp4 {
+    background: url("../../images/novice-bid/info/icon-feature4.png") no-repeat center;
+}
+
+.rulerBox {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    display: table;
+    margin-top: 20px;
+}
+
+.subTitle {
+    width: 690px;
+    margin-left: 30px;
+    height: 69px;
+    font-size: 28px;
+    color: #333;
+    line-height: 69px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.rulerContent {
+    padding: 30px;
+    font-size: 24px;
+    color: #555;
+    line-height: 40px;
+}
+
+.introduceBox {
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    line-height: 36px;
+}
+
+.introduceTitle {
+    width: 690px;
+    height: 70px;
+    margin-left: 30px;
+    border-bottom: 1px solid #d8d8d8;
+    font-size: 28px;
+    color: #333;
+    line-height: 70px;
+    margin-top: 20px;
+}
+
+.introduceText {
+    width: 650px;
+    padding: 30px 40px 10px 30px;
+    font-size: 24px;
+    color: #555;
+}
+
+.textTitle {
+    font-size: 26px;
+    color: #555;
+    margin-bottom: 18px;
+}
+
+.sectionText {
+    margin-bottom: 50px;
+}
+
+.bottomBox {
+    width: 690px;
+    height: 78px;
+    padding: 20px 0 20px 30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 10px #ccc;
+    display: table;
+}
+
+.reserveBtn {
+    width: 660px;
+    height: 74px;
+    line-height: 74px;
+    background-color: #fd4d4c;
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.jumpLink {
+    width: 660px;
+    height: 88px;
+    line-height: 88px;
+    background: #fff;
+    padding: 0 30px;
+    margin-top: 20px;
+    display: table;
+}
+
+.jumpLinkText {
+    float: left;
+}
+
+.jumpLinkArrow {
+    width: 16px;
+    height: 26px;
+    background: url("../../images/novice-bid/info/arrow.png") no-repeat center;
+    float: right;
+    margin-top: 31px;
+}
+
+.introBanner {
+    width: 100%;
+    height: 227px;
+    background: url("../../images/novice-bid/info/banner-intro.png") no-repeat center;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+
+.recordBtn {
+    width: 180px;
+    height: 90px;
+    line-height: 90px;
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.recordBtnIos {
+    composes: recordBtn;
+    top: 40px;
+}
+
+.addRate {
+    font-size: 30px;
+    font-weight: 700;
+}

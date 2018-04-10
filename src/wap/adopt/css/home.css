@@ -1,0 +1,181 @@
+.bg {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 0 40px 40px;
+    background: #5f5cd3 url('../images/home/bg.png') no-repeat;
+}
+
+.cnt-container {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 513px;
+    height: 48px;
+    line-height: 48px;
+    margin: 40px 35px 6px 0;
+    background-color: #9d9aff;
+    border-radius: 24px;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+
+.cnt-container span {
+    position: relative;
+}
+
+.cnt {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 38px;
+    height: 38px;
+    background-color: #5f5cd3;
+    border-radius: 19px;
+    transition: width 800ms ease-in-out;
+}
+
+.intro {
+    display: inline-block;
+    width: 92px;
+    height: 96px;
+    margin-top: 28px;
+    background-image: url('../images/home/intro.png');
+    vertical-align: top;
+}
+
+.to-next-level-tip {
+    color: #5f5cd3;
+    font-size: 24px;
+    text-align: left;
+}
+
+.dou-ge {
+    position: relative;
+    height: 450px;
+    margin-top: 290px;
+}
+
+.dou-ge-bubble {
+    box-sizing: border-box;
+    position: absolute;
+    display: table;
+    top: -128px;
+    left: 160px;
+    width: 342px;
+    height: 128px;
+    background-image: url('../images/home/dou-ge-bubble.png');
+    padding: 20px 13px 30px;
+}
+
+.dou-ge-bubble-text {
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.65;
+}
+
+.check-in-btn {
+    position: fixed;
+    top: 520px;
+    right: 40px;
+    width: 120px;
+    height: 132px;
+    background-image: url('../images/home/check-in-btn.png');
+}
+
+.check-in-bubble {
+    position: fixed;
+    top: 520px;
+    right: 40px;
+    width: 152px;
+    height: 68px;
+    transform: translate(12px, -56px);
+    background-image: url('../images/home/check-in-bubble.png');
+}
+
+.collection-entry {
+    float: left;
+    width: 125px;
+    height: 134px;
+    margin-bottom: 40px;
+    background-image: url('../images/home/collection-entry.png');
+}
+
+.treasure-entry {
+    float: right;
+    position: relative;
+    width: 125px;
+    height: 135px;
+    margin-bottom: 40px;
+    background-image: url('../images/home/treasure-entry.png');
+}
+
+.treasure-cnt {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    line-height: 30px;
+    border: 2px solid #fff;
+    background-color: #fd4d4c;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+
+.notification {
+    clear: both;
+    width: 640px;
+    height: 74px;
+    border-radius: 37px;
+    background-color: #8f8cf8;
+    color: #fff;
+    font-size: 28px;
+    line-height: 74px;
+}
+
+.notification > i {
+    float: left;
+    width: 32px;
+    height: 74px;
+    margin: 0 12px 0 22px;
+    background: url('../images/home/notification-icon.png') center no-repeat;
+}
+
+.notification span {
+    line-height: 74px;
+    margin-left: 12px;
+    color: #504dc6;
+    font-size: 24px;
+}
+
+.turn-on-notification {
+    float: right;
+    width: 120px;
+    height: 54px;
+    line-height: 54px;
+    margin: 10px;
+    border-radius: 27px;
+    background-color: #5350c9;
+}
+
+.turn-on-notification i {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    margin: 6px 0 0 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    vertical-align: top;
+}
+
+.turn-on-notification span {
+    color: #fff;
+    font-size: 24px;
+    line-height: 54px;
+}

@@ -1,0 +1,106 @@
+.bg {
+    box-sizing: border-box;
+    padding: 190px 0 285px;
+    min-height: 100%;
+    background: #673e1a url('../images/treasure/bg.png') no-repeat;
+}
+
+.tip {
+    box-sizing: border-box;
+    width: 382px;
+    height: 103px;
+    margin-left: 260px;
+    padding-left: 24px;
+    background-image: url('../images/treasure/tip.png');
+    color: #fff;
+}
+
+.tip-1 {
+    height: 60px;
+    line-height: 63px;
+    font-size: 28px;
+}
+
+.tip-1 i {
+    display: inline-block;
+    width: 52px;
+    height: 63px;
+    margin-left: 76px;
+    background: url('../images/treasure/digger-tip.png') no-repeat center;
+    vertical-align: top;
+}
+
+.tip-1 span {
+    color: #fbdc0e;
+    margin-left: 6px;
+    font-size: 36px;
+    vertical-align: top;
+}
+
+.tip-2 {
+    height: 43px;
+    line-height: 43px;
+    font-size: 24px;
+}
+
+.tip-2 span {
+    color: #fbdc0e;
+}
+
+.record-container {
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    transform: translate(-50%, 0);
+    width: 640px;
+    height: 180px;
+    border-radius: 16px;
+    padding: 30px;
+    background-color: #f3e1c6;
+}
+
+.record-title {
+    position: fixed;
+    left: 50%;
+    bottom: 220px;
+    transform: translate(-50%, 50%);
+    width: 226px;
+    height: 56px;
+    background-image: url('../images/treasure/record-title.png');
+}
+
+.record {
+    height: 119px;
+    overflow-y: scroll;
+}
+
+.record-item {
+    box-sizing: border-box;
+    display: table;
+    width: 100%;
+    height: 60px;
+    padding-left: 48px;
+    border-bottom: 1px solid #dac29d;
+    background: url('../images/treasure/digger-record.png') no-repeat left;
+    color: #a56e26;
+    font-size: 24px;
+}
+
+.record-time {
+    float: left;
+    line-height: 60px;
+}
+
+.record-treasure {
+    float: right;
+    line-height: 60px;
+}
+
+.record-treasure span {
+    color: #fd4d4c;
+}
+
+.record-item:last-child {
+    border: none;
+}

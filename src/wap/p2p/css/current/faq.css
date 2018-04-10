@@ -1,0 +1,52 @@
+.qItemShow {
+    width: 100%;
+    height: auto;
+    font-size: 28px;
+    color: #333;
+}
+
+.qItemHide {
+    composes: qItemShow;
+    height: 89px;
+    overflow: hidden;
+}
+
+.itemQuestion {
+    width: 690px;
+    height: 88px;
+    line-height: 88px;
+    color: #333;
+    border-bottom: 1px solid #e3e5ea;
+    display: table;
+    margin-left: 30px;
+}
+
+.itemAnswer {
+    min-height: 90px;
+    line-height: 36px;
+    padding: 30px;
+    font-size: 24px;
+    color: #999;
+}
+
+.itemQuestion:last-child {
+    border-bottom: 0 none;
+}
+
+.questionLeft {
+    float: left;
+}
+
+.arrowUp {
+    float: right;
+    margin-right: 30px;
+    width: 26px;
+    height: 16px;
+    margin-top: 37px;
+    background: url("../../images/current/arrowUp.png");
+}
+
+.arrowDown {
+    composes: arrowUp;
+    transform: rotate(180deg);
+}

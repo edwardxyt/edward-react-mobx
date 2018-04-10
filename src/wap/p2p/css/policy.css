@@ -1,0 +1,68 @@
+.bg {
+    width: 720px;
+    height: 100%;
+    background: #ebebee;
+}
+
+.policy-box {
+    background-color: #fff;
+}
+
+.line {
+    width: 100%;
+    height: 18px;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #ebebee;
+}
+
+.gap {
+    width: 660px;
+    margin: 0 30px;
+    height: 18px;
+    border-top: 1px solid #d8d8d8;
+}
+
+.policy-link {
+    width: 690px;
+    height: 90px;
+    margin-left: 30px;
+    line-height: 90px;
+    font-size: 30px;
+    background-color: #fff;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.link-detail {
+    display: block;
+    width: 640px;
+    height: 89px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: url("../images/policy/arrow.png") no-repeat right center;
+    padding-right: 20px;
+}
+
+.lightbox {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 620px;
+    z-index: 7;
+    opacity: 0.3;
+    background-color: rgb(0, 0, 0);
+    display: none;
+}
+
+.pop {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 620px;
+    height: 100%;
+    margin-left: -350px;
+    z-index: 9;
+}

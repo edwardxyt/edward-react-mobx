@@ -1,0 +1,290 @@
+.applyPanel {
+    height: 100%;
+    background: #ebebee;
+    display: table;
+}
+
+.submitPanel {
+    width: 100%;
+    background: #fff;
+    color: #333;
+    font-size: 30px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.reserveMoney {
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+    width: 100%;
+    background: #fff;
+    font-size: 24px;
+    color: #999;
+}
+
+.userMoney {
+    color: #555;
+    font-size: 30px;
+    padding: 4px 30px 30px 30px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    margin-top: -1px;
+}
+
+.money {
+    width: 100%;
+    height: 44px;
+    display: table;
+}
+
+.money .remain {
+    color: #333;
+    padding-left: 5px;
+}
+
+.money .balance {
+    width: 50%;
+    height: 100%;
+    float: left;
+    color: #999;
+}
+
+.money .recharge {
+    float: right;
+    width: 100px;
+    height: 44px;
+    font-size: 26px;
+    color: #7c9dc7;
+    line-height: 44px;
+    border-radius: 22px;
+    text-align: center;
+    border: solid 2px #7c9dc7;
+}
+
+.inputMoney {
+    border: 1px solid #e3e5ea;
+    border-radius: 8px;
+    width: 660px;
+    height: 74px;
+    background: #f2f2f2;
+    display: table;
+    margin-bottom: 24px;
+}
+
+.inputMoney input {
+    display: block;
+    float: left;
+    border: none;
+    outline: none;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    background: #f2f2f2;
+    font-size: 32px;
+    color: #555;
+    width: 420px;
+    margin: 15px 0;
+}
+
+.inputMoney .allmadeBtn {
+    display: block;
+    color: #4aa1f9;
+    float: right;
+    padding-right: 20px;
+    text-align: right;
+    margin: 20px 0;
+}
+
+.interval {
+    width: 100%;
+    height: 20px;
+    background-color: #ebebee;
+}
+
+.submitInfo {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+
+.infoContent {
+    width: 690px;
+    margin-left: 30px;
+    font-size: 32px;
+    color: #555555;
+}
+
+.infoAmount {
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    display: table;
+    border-bottom: 1px solid #e3e5ea;
+}
+
+.amountLeft {
+    float: left;
+    font-size: 30px;
+    color: #333;
+}
+
+.amountRight {
+    float: right;
+    font-size: 30px;
+    color: #fd4d4c;
+    margin-right: 30px;
+    font-weight: 700;
+}
+
+.itemWrapper {
+    width: 660px;
+    padding: 40px 30px 40px 0;
+    height: auto;
+}
+
+.infoItem {
+    width: 100%;
+    display: table;
+    font-size: 26px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.itemLeft {
+    float: left;
+}
+
+.itemRight {
+    float: right;
+    font-weight: 700;
+    color: #333;
+}
+
+.itemLast {
+    border-bottom: 0 none;
+    margin-bottom: 0;
+}
+
+.submitProtocol {
+    width: 660px;
+    margin: 30px 0 0 30px;
+    font-size: 24px;
+    color: #999999;
+    line-height: 30px;
+    padding-bottom: 138px;
+    padding-right: 30px;
+}
+
+.protocolChecked {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background: url("../../images/reserve-bid/apply/procotol-checked.png") no-repeat center;
+    vertical-align: middle;
+}
+
+.protocolUnChecked {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background: url("../../images/reserve-bid/apply/protocol-unchecked.png") no-repeat center;
+    vertical-align: middle;
+}
+
+.protocolText {
+    vertical-align: middle;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.submitBtnContainer {
+    width: 100%;
+    height: 118px;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 2px 10px #ccc;
+}
+
+.applyProtocol {
+    display: inline-block;
+    color: #4aa1f9;
+}
+
+.submitBtn {
+    width: 660px;
+    height: 74px;
+    margin: 22px auto;
+    background-color: #fd4d4c;
+    font-size: 32px;
+    color: #fff;
+    line-height: 74px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.submitBtn-disabled {
+    width: 660px;
+    height: 74px;
+    margin: 22px auto;
+    background-color: #ccc;
+    font-size: 32px;
+    color: #fff;
+    line-height: 74px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.rightRed {
+    color: #fd4d4c;
+}
+
+.typeTitle {
+    padding: 30px 0 30px 30px;
+}
+
+.typeSubtitle {
+    font-size: 24px;
+    color: #999;
+    padding: 0 0 10px 30px;
+}
+
+.typeText {
+    width: 660px;
+    height: 56px;
+    display: table;
+    padding: 0 30px 30px;
+}
+
+.typeItem {
+    float: left;
+    font-size: 26px;
+    color: #555;
+    padding: 8px 16px;
+    border: solid 2px #e3e5ea;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.color9 {
+    color: #999;
+}
+
+.typeItemChecked {
+    color: #fd4d4c;
+    border: solid 2px #fd4d4c;
+    background: url("../../images/reserve-bid/apply/icon-checked.png") no-repeat right bottom;
+}
+
+.typeItemChecked .color9 {
+    color: #fd4d4c;
+}
+
+.coverBeans {
+    font-size: 22px;
+    color: #999;
+}

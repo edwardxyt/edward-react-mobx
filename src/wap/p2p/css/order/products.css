@@ -1,0 +1,155 @@
+.infoPanel {
+    height: auto;
+    background-color: #ebebee;
+    color: #555;
+    padding-bottom: 16px;
+    overflow: hidden;
+}
+
+.introBanner {
+    width: 100%;
+    height: 227px;
+    background: url("../../images/reserve-bid/info/banner-intro.jpg") no-repeat center;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+
+.bidBox {
+    width: 100%;
+    height: auto;
+    display: table;
+    margin: 20px 0;
+    background: #fff;
+}
+
+.bidItem {
+    width: 660px;
+    height: 90px;
+    display: table;
+    padding: 40px 40px 40px 0;
+    margin-left: 40px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.bidItem:last-child {
+    border-bottom: 0 none;
+}
+
+.itemCeil {
+    float: left;
+    width: 33.3%;
+}
+
+.itemBtn {
+    float: right;
+    width: 33.3%;
+    text-align: right;
+    padding-top: 30px;
+}
+
+.ceilUp {
+    font-size: 33px;
+    color: #555;
+    height: 70px;
+    line-height: 70px;
+}
+
+.ceilDown {
+    font-size: 24px;
+    color: #999;
+}
+
+.btn {
+    width: 180px;
+    height: 54px;
+    border-radius: 27px;
+    background-color: #fd4d4c;
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    line-height: 54px;
+    display: inline-block;
+}
+
+.btn-disabled {
+    width: 180px;
+    height: 54px;
+    border-radius: 27px;
+    background-color: #ccc;
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    line-height: 54px;
+    display: inline-block;
+}
+
+.ceilTwo {
+    text-align: left;
+    padding-left: 60px;
+    width: 24%;
+}
+
+.ceilTwo .ceilUp {
+    font-size: 33px;
+    line-height: 90px;
+}
+
+.ceilOne .ceilUp {
+    color: #fd4d4c;
+    font-size: 60px;
+}
+
+.loadPercent {
+    font-size: 30px;
+}
+
+.rulerContentNovice {
+    padding: 30px 30px 0 30px;
+    font-size: 24px;
+    color: #555;
+    line-height: 40px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.openBtn {
+    width: 412px;
+    margin-left: 30px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 24px;
+    color: #4aa1f9;
+    border-top: 1px solid #d8d8d8;
+    padding-left: 278px;
+}
+
+.textEpli {
+    margin-bottom: 0;
+}
+
+.recordBtn {
+    width: 180px;
+    height: 90px;
+    line-height: 90px;
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.recordBtnIos {
+    composes: recordBtn;
+    top: 40px;
+}
+
+.ceilOne .ceilUp .addRate {
+    font-size: 30px;
+}
+
+.ceilOne .ceilUp .addRateNum {
+    font-size: 40px;
+}

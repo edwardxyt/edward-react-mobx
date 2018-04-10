@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=720, user-scalable=no">
+    <meta name="viewport-fit" content="cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="format-detection" content="telephone=no" />    
+    <!-- 接口地址前缀 -->
+    <meta name="api-path" content="{{ htmlWebpackPlugin.options.API_PATH }}" />
+    <meta name="debug" content="{{ htmlWebpackPlugin.options.DEBUG }}" />
+    <meta name="compiledAt" content="{{ htmlWebpackPlugin.options.COMPILED_AT }}" />
+    <title>金融工场</title>
+</head>
+
+<body style="height: 100%">
+    <div id="cnt" style="height: 100%"></div>
+
+    {{#unless htmlWebpackPlugin.options.DEBUG }}
+        <script>
+            var _vds = _vds || [];
+            window._vds = _vds;
+            (function () {
+                _vds.push(['setAccountId', 'af530885d23e3d7a']);
+                (function () {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        </script>
+    {{/unless}}
+
+</body>
+</html>

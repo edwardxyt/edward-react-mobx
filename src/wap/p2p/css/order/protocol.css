@@ -1,0 +1,31 @@
+.protocol-box {
+    height: 100%;
+    background-color: #ebebee;
+    font-size: 30px;
+    line-height: 46px;
+    color: #333;
+    display: table;
+    padding-top: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.number {
+    text-align: right;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.signature-left {
+    float: left;
+}
+
+.signature-right {
+    float: right;
+}
+
+.contractText {
+    padding: 30px;
+}
