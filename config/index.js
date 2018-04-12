@@ -49,6 +49,7 @@ let app_config = (rootDir = "/") => {
             // ----------------------------------
             inject: {
                 __API__: JSON.stringify(api_path),
+                __CDN__: JSON.stringify(cdn_path),
                 __ENV__: JSON.stringify(env),
                 __DEBUG__: JSON.stringify(Vconsole),
                 __MOBILE__: JSON.stringify(mobile),
