@@ -42,7 +42,7 @@
     "not ie <= 8"
   ],
   "scripts": {
-    "clean": "rimraf node_modules && cnpm i",
+    "clean": "rimraf node_modules",
     "dev": "DEBUG=development:* NODE_ENV='development' webpack-dev-server",
     "precompile": "DEBUG=compile:* node bin/del",
     "compile": "DEBUG=compile:* node bin/compile",
