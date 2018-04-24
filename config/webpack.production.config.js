@@ -1,6 +1,10 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 const path = require("path");
 const debug = require("debug");
 const echo = debug("compile:webpack");
@@ -12,7 +16,9 @@ let app_config = require(".")(path.resolve(__dirname, "../"));
 module.exports = function(CONFIG = {}) {
     return new Promise(function(resolve, reject) {
         resolve({
-            entry: ["babel-polyfill", "whatwg-fetch", app_config.main],
+            entry: {
+                app: ["whatwg-fetch", app_config.main]
+            },
             mode: "production",
             output: {
                 filename: "javascripts/[name].[chunkhash:5].js",
@@ -63,7 +69,8 @@ module.exports = function(CONFIG = {}) {
                     },
                     {
                         test: /\.css$/,
-                        use: ExtractTextPlugin.extract([
+                        use: [
+                            MiniCssExtractPlugin.loader,
                             {
                                 loader: "css-loader",
                                 options: {
@@ -74,12 +81,13 @@ module.exports = function(CONFIG = {}) {
                             },
                             "resolve-url-loader",
                             "postcss-loader"
-                        ]),
+                        ],
                         include: [app_config.src]
                     },
                     {
                         test: /\.css$/,
-                        use: ExtractTextPlugin.extract([
+                        use: [
+                            MiniCssExtractPlugin.loader,
                             {
                                 loader: "css-loader",
                                 options: {
@@ -89,7 +97,7 @@ module.exports = function(CONFIG = {}) {
                                 }
                             },
                             "postcss-loader"
-                        ]),
+                        ],
                         include: [app_config.node_module_dir]
                     },
                     {
@@ -110,13 +118,27 @@ module.exports = function(CONFIG = {}) {
                 ]
             },
             optimization: {
-                minimize: true,
+                minimizer: [
+                    new UglifyJsPlugin({
+                        cache: true,
+                        parallel: true,
+                        sourceMap: !!app_config.debug // set to true if you want JS source maps
+                    }),
+                    new OptimizeCSSAssetsPlugin({})
+                ],
                 splitChunks: {
                     cacheGroups: {
                         commons: {
-                            test: /[\\/]node_modules[\\/]/,
-                            name: "vendor",
-                            chunks: "all"
+                            name: "commons",
+                            priority: 10,
+                            chunks: "initial"
+                        },
+                        styles: {
+                            name: "styles",
+                            test: /\.css$/,
+                            chunks: "all",
+                            minChunks: 2,
+                            enforce: true
                         }
                     }
                 }
@@ -125,14 +147,13 @@ module.exports = function(CONFIG = {}) {
                 new webpack.optimize.ModuleConcatenationPlugin(),
                 new webpack.LoaderOptionsPlugin({ minimize: true }),
                 new webpack.DefinePlugin(app_config.inject),
-                new ExtractTextPlugin({
-                    filename: getPath => {
-                        return getPath(path.join("css", "e.[name].[chunkhash:5].css"));
-                    },
-                    allChunks: true
+                new MiniCssExtractPlugin({
+                    filename: "[name].[contenthash].css",
+                    chunkFilename: "[id].[contenthash].css"
                 }),
                 new HtmlWebpackPlugin({
                     filename: "index.html",
+                    chunks: ["app", "commons"],
                     template: app_config.template_path,
                     COMPILED_AT: new Date().toString(),
                     CONFIG: {
