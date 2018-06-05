@@ -24,8 +24,10 @@ webpack_production_config().then(config => {
     }
     webpack(config).run((err, stats) => {
         if (err) {
+            echo("webpack compile fail 编译错误！");
             console.log(err);
+        } else {
+            echo("webpack compile complete 编译完成");
         }
-        echo("webpack compile complete 编译完成");
     });
 });

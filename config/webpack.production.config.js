@@ -26,7 +26,7 @@ module.exports = function(CONFIG = {}) {
                 publicPath: app_config.cdn_path, // 需要cdn 就开启
                 path: `${app_config.dist}/${app_config.entry}` // /static/PROJECT/
             },
-            devtool: !!app_config.debug ? "source-map" : "eval-source-map",
+            devtool: app_config.debug ? "cheap-module-eval-source-map" : "source-map",
             module: {
                 rules: [
                     {
@@ -122,7 +122,7 @@ module.exports = function(CONFIG = {}) {
                     new UglifyJsPlugin({
                         cache: true,
                         parallel: true,
-                        sourceMap: !!app_config.debug // set to true if you want JS source maps
+                        sourceMap: app_config.debug // set to true if you want JS source maps
                     }),
                     new OptimizeCSSAssetsPlugin({})
                 ],
