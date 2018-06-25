@@ -47,6 +47,7 @@ module.exports = {
         compress: true,
         port: CONSTANTS.devServer.port,
         host: "0.0.0.0",
+        disableHostCheck: true,
         historyApiFallback: true
     },
     module: {
@@ -106,12 +107,12 @@ module.exports = {
                             localIdentName: "[name]__[local]--[hash:base64:6]"
                         }
                     },
-                    {
-                        loader: "resolve-url-loader",
-                        options: {
-                            debug: true
-                        }
-                    },
+                    // {
+                    //     loader: "resolve-url-loader",
+                    //     options: {
+                    //         debug: true
+                    //     }
+                    // },
                     {
                         loader: "postcss-loader",
                         options: {
