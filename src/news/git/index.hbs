@@ -11,5 +11,8 @@
 </head>
 <body>
 	<div id='main'></div>
+	{{#if htmlWebpackPlugin.options.CONFIG.dll }}
+			<script src="./javascripts/dll/vendor_dll.js"></script>
+	{{/if}}
 </body>
 </html>

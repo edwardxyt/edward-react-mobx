@@ -22,6 +22,8 @@ class Home extends React.Component {
                 >
                     点击次数：{this.props.clickTimes.times}
                 </div>
+                <p>点击10次数：{this.props.clickTimes.total}</p>
+                <p>获取IDS：{this.props.clickTimes.getId}</p>
             </div>
         );
     }

@@ -2,7 +2,8 @@ node_modules
 .DS_Store
 npm-debug.log
 yarn.lock
-package.lock.json
+package-lock.json
+config/localhost.settings.js
 
 build
 dist

@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const HappyPack = require("happypack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -13,11 +14,16 @@ const echo = debug("compile:webpack");
 echo("加载配置文件");
 let app_config = require(".")(path.resolve(__dirname, "../"));
 
+// disable console
+let disableConsole = app_config.debug ? [] : ["transform-remove-console"];
+echo(`disable console: ${disableConsole}`);
+
 module.exports = function(CONFIG = {}) {
     return new Promise(function(resolve, reject) {
         resolve({
             entry: {
-                app: ["whatwg-fetch", app_config.main]
+                app: ["babel-polyfill", "whatwg-fetch", app_config.main],
+                vendor: app_config.library
             },
             mode: "production",
             output: {
@@ -26,35 +32,38 @@ module.exports = function(CONFIG = {}) {
                 publicPath: app_config.cdn_path, // 需要cdn 就开启
                 path: `${app_config.dist}/${app_config.entry}` // /static/PROJECT/
             },
-            devtool: app_config.debug ? "cheap-module-eval-source-map" : "source-map",
+            devtool: app_config.debug
+                ? "cheap-module-eval-source-map"
+                : "source-map",
             module: {
                 rules: [
                     {
                         test: /\.(js|jsx)$/,
-                        use: [
-                            {
-                                loader: "babel-loader",
-                                options: {
-                                    presets: [
-                                        [
-                                            "env",
-                                            {
-                                                targets: {
-                                                    browsers: app_config.PRESETS_ENV_BROWSERS,
-                                                    useBuiltIns: true,
-                                                    uglify: false,
-                                                    include: ["transform-es2015-arrow-functions"],
-                                                    debug: false
-                                                }
-                                            }
-                                        ],
-                                        "react",
-                                        "stage-2"
-                                    ],
-                                    plugins: ["transform-decorators-legacy", app_config.antd]
-                                }
-                            }
-                        ],
+                        use: "happypack/loader?id=jsx",
+                        // [
+                        //     {
+                        //         loader: "babel-loader",
+                        //         options: {
+                        //             presets: [
+                        //                 [
+                        //                     "env",
+                        //                     {
+                        //                         targets: {
+                        //                             browsers: app_config.PRESETS_ENV_BROWSERS,
+                        //                             useBuiltIns: true,
+                        //                             uglify: false,
+                        //                             include: ["transform-es2015-arrow-functions"],
+                        //                             debug: false
+                        //                         }
+                        //                     }
+                        //                 ],
+                        //                 "react",
+                        //                 "stage-2"
+                        //             ],
+                        //             plugins: ["transform-decorators-legacy", app_config.antd]
+                        //         }
+                        //     }
+                        // ],
                         exclude: [app_config.node_module_dir],
                         include: [app_config.src]
                     },
@@ -68,6 +77,23 @@ module.exports = function(CONFIG = {}) {
                         include: [app_config.src]
                     },
                     {
+                        test: /\.less$/,
+                        use: [
+                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: "css-loader",
+                                options: {
+                                    minimize: true,
+                                    modules: false,
+                                    localIdentName:
+                                        "src.[name]__[local]--[hash:base64:6]"
+                                }
+                            },
+                            "less-loader"
+                        ],
+                        include: [app_config.src]
+                    },
+                    {
                         test: /\.css$/,
                         use: [
                             MiniCssExtractPlugin.loader,
@@ -76,7 +102,8 @@ module.exports = function(CONFIG = {}) {
                                 options: {
                                     minimize: true,
                                     modules: true,
-                                    localIdentName: "src.[name]__[local]--[hash:base64:6]"
+                                    localIdentName:
+                                        "src.[name]__[local]--[hash:base64:6]"
                                 }
                             },
                             // "resolve-url-loader",
@@ -93,7 +120,8 @@ module.exports = function(CONFIG = {}) {
                                 options: {
                                     minimize: true,
                                     modules: false,
-                                    localIdentName: "node_modules.[name]__[local]--[hash:base64:6]"
+                                    localIdentName:
+                                        "node_modules.[name]__[local]--[hash:base64:6]"
                                 }
                             },
                             "postcss-loader"
@@ -121,7 +149,7 @@ module.exports = function(CONFIG = {}) {
                 minimizer: [
                     new UglifyJsPlugin({
                         cache: true,
-                        parallel: true,
+                        parallel: true, // 并行
                         sourceMap: app_config.debug // set to true if you want JS source maps
                     }),
                     new OptimizeCSSAssetsPlugin({})
@@ -130,33 +158,79 @@ module.exports = function(CONFIG = {}) {
                     cacheGroups: {
                         commons: {
                             name: "commons",
+                            chunks: "initial",
                             priority: 10,
-                            chunks: "initial"
-                        },
-                        styles: {
-                            name: "styles",
-                            test: /\.css$/,
-                            chunks: "all",
                             minChunks: 2,
-                            enforce: true
+                            maxAsyncRequests: 5,
+                            maxInitialRequests: 3,
+                            minSize: 1000 // 1kb
                         }
+                        // styles: {
+                        //     name: "styles",
+                        //     test: /\.css$/,
+                        //     chunks: "all",
+                        //     minChunks: 2, // 默认为1；
+                        //     enforce: true
+                        // }
                     }
                 }
             },
             plugins: [
+                new webpack.DllReferencePlugin({
+                    manifest: path.join(
+                        `${app_config.dist}/${app_config.entry}`,
+                        "./javascripts/dll",
+                        "manifest.json"
+                    )
+                }),
+                new HappyPack({
+                    id: "jsx",
+                    threads: 4,
+                    loaders: [
+                        {
+                            loader: "babel-loader",
+                            options: {
+                                cacheDirectory: true,
+                                presets: [
+                                    [
+                                        "env",
+                                        {
+                                            targets: {
+                                                browsers:
+                                                    app_config.PRESETS_ENV_BROWSERS,
+                                                useBuiltIns: true,
+                                                uglify: false,
+                                                // include: ["transform-es2015-arrow-functions"],
+                                                debug: false
+                                            }
+                                        }
+                                    ],
+                                    "react",
+                                    "stage-2"
+                                ],
+                                plugins: [
+                                    "transform-decorators-legacy",
+                                    app_config.antd,
+                                    ...disableConsole
+                                ]
+                            }
+                        }
+                    ]
+                }),
                 new webpack.optimize.ModuleConcatenationPlugin(),
                 new webpack.LoaderOptionsPlugin({ minimize: true }),
                 new webpack.DefinePlugin(app_config.inject),
                 new MiniCssExtractPlugin({
-                    filename: "[name].[contenthash].css",
-                    chunkFilename: "[id].[contenthash].css"
+                    filename: "styles/[name].[contenthash].css",
+                    chunkFilename: "styles/[id].[contenthash].css"
                 }),
                 new HtmlWebpackPlugin({
                     filename: "index.html",
-                    chunks: ["app", "commons"],
+                    chunks: ["app"], // "commons", "vendor"
                     template: app_config.template_path,
                     COMPILED_AT: new Date().toString(),
                     CONFIG: {
+                        dll: true,
                         env: app_config.inject.__ENV__,
                         debug: app_config.inject.__DEBUG__,
                         api_path: app_config.inject.__API__,

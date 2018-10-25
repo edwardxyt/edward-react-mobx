@@ -1,3 +1,4 @@
 import clickTimes from "./clickTimesStore.js";
-const stores = { clickTimes };
+import fetchData from "./fetchStore.js";
+const stores = { clickTimes, fetchData };
 export default stores;

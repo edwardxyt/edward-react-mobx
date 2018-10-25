@@ -1,16 +1,27 @@
-'use strict'
-import { observable,action } from 'mobx'
+"use strict";
+import { extendObservable, action, computed } from "mobx";
 
 // 点击次数
 class clickTimesStore {
-  @observable times;
-  @action click = (Increment)=>{
-    this.times += Increment
-  }
-  constructor(){
-    this.times = 0
-  }
-}
-const clickTimes = new clickTimesStore()
+    constructor() {
+        extendObservable(this, {
+            times: 1,
+            get total() {
+                return this.times * 10;
+            }
+        });
+    }
 
-export default clickTimes
+    @computed
+    get getId() {
+        return this.times + "Id";
+    }
+
+    @action
+    click = Increment => {
+        this.times += Increment;
+    };
+}
+const clickTimes = new clickTimesStore();
+
+export default clickTimes;

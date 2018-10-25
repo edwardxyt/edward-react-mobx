@@ -5,7 +5,7 @@ import UAParser from "ua-parser-js";
 
 let parser = new UAParser();
 console.log(parser.getResult());
-console.log(__API__, __CDN__, __ENV__, __DEBUG__, __MOBILE__, __PROJECT__);
+console.log(__API__, __Y__, __CDN__, __ENV__, __DEBUG__, __MOBILE__, __PROJECT__);
 
 let main = function() {
     ReactDOM.render(<App />, document.getElementById("main"));

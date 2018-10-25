@@ -23,15 +23,15 @@ const CONSTANTS = Object.assign({}, app_config, settings);
 echo("启动webpack-dev-server");
 echo(`服务器运行在 http://${ip.address()}:${CONSTANTS.devServer.port}`);
 
-module.exports = {
-    entry: ["babel-polyfill", "whatwg-fetch", CONSTANTS.console, CONSTANTS.main],
+let wbConfig = {
+    entry: ["babel-polyfill", "whatwg-fetch", CONSTANTS.main],
     mode: "development",
     output: {
         filename: "bundle.js",
         publicPath: "/",
         path: CONSTANTS.dist
     },
-    devtool: "source-map",
+    devtool: "cheap-module-eval-source-map",
     devServer: {
         // fake数据使用，如果接口是跨域的 这也可以使用
         proxy: CONSTANTS.devServer.proxy,
@@ -63,10 +63,11 @@ module.exports = {
                                     "env",
                                     {
                                         targets: {
-                                            browsers: CONSTANTS.PRESETS_ENV_BROWSERS,
+                                            browsers:
+                                                CONSTANTS.PRESETS_ENV_BROWSERS,
                                             useBuiltIns: true,
                                             uglify: false,
-                                            include: ["transform-es2015-arrow-functions"],
+                                            // include: ["transform-es2015-arrow-functions"],
                                             debug: true
                                         }
                                     }
@@ -74,7 +75,10 @@ module.exports = {
                                 "react",
                                 "stage-2"
                             ],
-                            plugins: ["transform-decorators-legacy", CONSTANTS.antd]
+                            plugins: [
+                                "transform-decorators-legacy",
+                                CONSTANTS.antd
+                            ]
                         }
                     }
                 ],
@@ -88,6 +92,27 @@ module.exports = {
                     partialDirs: [CONSTANTS.templates_dir]
                 },
                 exclude: [CONSTANTS.node_module_dir],
+                include: [CONSTANTS.src]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: "style-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                            modules: false,
+                            localIdentName: "[name]__[local]--[hash:base64:6]"
+                        }
+                    },
+                    "less-loader"
+                ],
                 include: [CONSTANTS.src]
             },
             {
@@ -174,6 +199,7 @@ module.exports = {
             template: CONSTANTS.template_path,
             COMPILED_AT: new Date().toString(),
             CONFIG: {
+                dll: false,
                 env: CONSTANTS.inject.__ENV__,
                 debug: CONSTANTS.inject.__DEBUG__,
                 api_path: CONSTANTS.inject.__API__,
@@ -183,3 +209,9 @@ module.exports = {
         new webpack.NamedModulesPlugin()
     ]
 };
+
+if (CONSTANTS.console) {
+    wbConfig.entry.push(CONSTANTS.console);
+}
+
+module.exports = wbConfig;

@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const ip = require("ip");
 const R = require("ramda");
 const history = require("connect-history-api-fallback");
 const debug = require("debug");
@@ -30,5 +31,5 @@ app.get("/users/5.json", (req, res) => {
 });
 
 app.listen(port, () => {
-    echo(`Example app listening on port ${port}!`);
+    echo(`服务器运行在 http://${ip.address()}:${port}`);
 });
